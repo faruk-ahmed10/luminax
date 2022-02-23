@@ -1,0 +1,154 @@
+import { useState } from 'react';
+import Image from 'next/image';
+import banner from '../assets/img/banner.png';
+
+import { BsShuffle, BsFillHeartFill, BsThreeDotsVertical } from 'react-icons/bs';
+import { ImLoop } from 'react-icons/im';
+import { IoPlaySkipForwardSharp, IoPlaySkipBackSharp, IoPlaySharp, IoPause } from 'react-icons/io5';
+import { RiPlayList2Fill } from 'react-icons/ri';
+import { MdOutlineDevicesOther } from 'react-icons/md';
+import { GiSpeaker } from 'react-icons/gi';
+import { AiOutlineExpandAlt } from 'react-icons/ai';
+
+
+const Music = () => {
+
+    const [play, setPlay] = useState(true);
+
+    return (
+        <div className="container mx-auto">
+            <div className="w-full">
+                <Image src={banner} alt={'Cover Page'} />
+            </div>
+            <div className="container mx-auto">
+                <div className="flex flex-col md:flex-row gap-5">
+                    <div className="w-full">
+                        <h1 className="text-2xl font-bold mb-5 text-dark-white">Popular</h1>
+                        <ul className="flex flex-col gap-5">
+                            {
+                                Array(5).fill('').map((v, idx) => (
+                                    <li key={idx} className="w-full flex items-center">
+                                        <div className="">
+                                            <Image src={banner} alt={'Music Tag'} width={50} height={50} />
+                                        </div>
+                                        <div className="w-full flex">
+                                            <div className="">
+                                                <span className="px-2">1</span>
+                                                <span className="px-2">+</span>
+                                            </div>
+                                            <div className="flex flex-1">
+                                                <h3 className="flex-1">Colourblind</h3>
+                                                <h5 className="">1,812,421</h5>
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                    <div className="w-full">
+                        <h1 className=" text-2xl text-white font-bold mb-5">Related Artists</h1>
+                        <ul className='flex flex-wrap gap-5 md:flex-col'>
+                            {
+                                Array(5).fill('').map((v, idx) => (
+                                    <li key={idx} className="flex items-center">
+                                        <div className="">
+                                            <Image src={banner} alt={'Music Photo'} width={50} height={50} className="rounded-full" />
+                                        </div>
+                                        <h2 className="px-2 font-bold">Issues</h2>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                </div>
+                
+                <div className="py-5">
+                    <h1 className="text-2xl font-bold text-dark-white pb-5">Albums</h1>
+                    <div className="flex">
+                        <div className="">
+                            <Image src={banner} alt={'Album Photo'} width={100} height={100} />
+                        </div>
+                        <div className="pl-5 flex flex-col justify-between">
+                            <h2 className="">2016</h2>
+                            <h1 className="text-3xl text-dark-white font-bold">Dissonants</h1>
+                            <div className="flex">
+                                <div className="text-green-500">Save</div>
+                                <div className=""><BsThreeDotsVertical /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="py-5 border-t border-dark-gray">
+                    {/* Audio Player */}
+                    <div className="w-full flex flex-col items-center justify-between lg:flex-row">
+                        <div className="w-full flex justify-between items-center">
+                            <div className="">
+                                <Image src={banner} alt={'Audio Image'} width={50} height={50} />
+                            </div>
+                            <div className="flex justify-between items-center flex-1">
+                                <div className="pl-5">
+                                    <h2 className="text-dark-white">Casio</h2>
+                                    <h4 className="text-sm">Jungle</h4>
+                                </div>
+                                <div className="px-5"><BsFillHeartFill /></div>
+                            </div>
+                        </div>
+                        {/* Playing Progress */}
+                        <div className="w-full">
+                            <div className="flex items-center">
+                                <span className="pr-5 text-sm">0:59</span>
+                                <div className="w-full lg:w-36 h-1 bg-dark-pri/50 rounded-full overflow-hidden">
+                                    <div className="w-3/5 h-full bg-dark-pri"></div>
+                                </div>
+                                <span className="pl-5 text-sm">2:35</span>
+                            </div>
+                        </div>
+                        {/* Player Handler */}
+                        <div className="w-full py-2 flex items-center justify-between">
+                            <div className="px-2">
+                                <BsShuffle />
+                            </div>
+                            <div className="px-2">
+                                <IoPlaySkipBackSharp />
+                            </div>
+                            <div onClick={() => setPlay(!play)} className="w-8 h-8 px-2 transition-all duration-300 ease-out cursor-pointer rounded-full bg-dark-white flex justify-center items-center text-dark">
+                                {
+                                    play ? 
+                                    <IoPlaySharp />:
+                                    <IoPause />
+                                }
+                            </div>
+                            <div className="px-2">
+                                <IoPlaySkipForwardSharp />
+                            </div>
+                            <div className="px-2">
+                                <ImLoop />
+                            </div>
+                        </div>
+                        {/* Right */}
+                        <div className="w-full flex justify-between items-center">
+                            <div className="px-2">
+                                <RiPlayList2Fill />
+                            </div>
+                            <div className="px-3">
+                                <MdOutlineDevicesOther />
+                            </div>
+                            <div className="flex items-center px-3">
+                                <GiSpeaker />
+                                <div className=" rounded-full">
+                                    <input type="range" className="w-20 h-1 focus:outline-none focus:shadow-none" />
+                                </div>
+                            </div>
+                            <div className="font-bold text-2xl">
+                                <AiOutlineExpandAlt />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Music;
