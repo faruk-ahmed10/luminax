@@ -14,7 +14,7 @@ const Swap = () => {
     const [autoRecharge, setAutoRecharge] = useState(true);
 
     return (
-        <div className="w-full">
+        <div className="w-full px-8">
             <Header title={'Swap'} />
             <div className="w-full flex flex-col md:flex-row gap-5">
                 <Buy />

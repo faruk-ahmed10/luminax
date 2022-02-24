@@ -12,7 +12,7 @@ const Faucet = () => {
     
 
     return (
-        <div className="w-full">
+        <div className="w-full px-8">
                 <Header title={'Faucet'} />
                 <Spot />
                 <div className="my-8 w-full grid lg:grid-cols-2 xl:grid-cols-3 gap-8">

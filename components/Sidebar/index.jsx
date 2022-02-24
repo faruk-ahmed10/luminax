@@ -1,10 +1,10 @@
 import Image from "next/image"
 import logo from "../../assets/img/logo.svg"
-import { IoDocumentTextOutline } from 'react-icons/io5'
+import { IoDocumentTextOutline, IoCloseSharp } from 'react-icons/io5'
 import { BiShoppingBag } from 'react-icons/bi'
 import { RiFacebookCircleLine, RiTwitterLine } from 'react-icons/ri';
 import { BsInstagram, BsExclamationCircle } from 'react-icons/bs';
-import { FaChalkboardTeacher } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaCross } from 'react-icons/fa';
 import Link from 'next/link';
 
 import binance from '../../assets/img/binance.svg';
@@ -14,8 +14,11 @@ import digibyte from '../../assets/img/digibyte.svg';
 const Sidebar = () => {
     return (
         <div className={`w-[250px] h-full bg-dark-gray min-h-screen shadow-lg`}>
-            <div className="w-full pl-4 h-20 flex items-center">
+            <div className="relative w-full pl-4 h-20 flex items-center">
                 <Image src={logo} alt={"LuminaX Logo"} />
+                <div className="absolute top-2 right-2 text-2xl text-red-500 cursor-pointer md:hidden">
+                    <IoCloseSharp />
+                </div>
             </div>
             <ul className="w-full pl-4 pt-5">
                 {

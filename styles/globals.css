@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .slider-thumb::-webkit-slider-thumb {
+        @apply appearance-none w-3 h-3 rounded-full bg-dark-gray cursor-pointer;
+    }
+
+    .slider-thumb::-webkit-slider-thumb:hover {
+        @apply bg-blue-700;
+    }
+}

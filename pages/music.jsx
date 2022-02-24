@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import banner from '../assets/img/banner.png';
+import banner2 from '../assets/img/banner2.png';
+import Link from 'next/link';
 
 import { BsShuffle, BsFillHeartFill, BsThreeDotsVertical } from 'react-icons/bs';
 import { ImLoop } from 'react-icons/im';
@@ -13,21 +15,43 @@ import { AiOutlineExpandAlt } from 'react-icons/ai';
 
 const Music = () => {
 
-    const [play, setPlay] = useState(true);
+    const [play, setPlay] = useState(false);
+    const [volume, setVolume] = useState(50);
+    const [currentTime, setCurrentTime] = useState(0);
+    const audio = useRef( typeof Audio !== "undefined" ? new Audio("http://localhost:3000/bensound-dubstep.mp3") : undefined );
+    const [duration, setDuration] = useState();
+    
+    console.log("Music Duration: ", duration);
+
+    const changTime = audio.current ? audio.current.currentTime : 0;
+
+    useEffect(() => {
+
+        play ? audio.current.play() : audio.current.pause();
+        audio.current ? setDuration(audio.current.duration) : 0;
+    },[play, audio]);
+
+    useEffect(() => {
+
+        audio.current.volume = volume/100;
+
+    }, [volume, audio]);
+
+    useEffect(() => setCurrentTime(audio.current.currentTime),[changTime]);
 
     return (
-        <div className="container mx-auto">
-            <div className="w-full">
-                <Image src={banner} alt={'Cover Page'} />
+        <div className="w-full">
+            <div className="min-w-full">
+                <Image src={banner2} alt={'Cover Page'} />
             </div>
-            <div className="container mx-auto">
+            <div className="px-8 mt-8">
                 <div className="flex flex-col md:flex-row gap-5">
                     <div className="w-full">
-                        <h1 className="text-2xl font-bold mb-5 text-dark-white">Popular</h1>
+                        <h1 className="text-2xl font-bold mb-3 text-dark-white">Popular</h1>
                         <ul className="flex flex-col gap-5">
                             {
                                 Array(5).fill('').map((v, idx) => (
-                                    <li key={idx} className="w-full flex items-center">
+                                    <li key={idx} className="w-full flex items-center text-sm">
                                         <div className="">
                                             <Image src={banner} alt={'Music Tag'} width={50} height={50} />
                                         </div>
@@ -37,17 +61,22 @@ const Music = () => {
                                                 <span className="px-2">+</span>
                                             </div>
                                             <div className="flex flex-1">
-                                                <h3 className="flex-1">Colourblind</h3>
+                                                <h3 className="flex-1 font-semibold text-dark-white">Colourblind</h3>
                                                 <h5 className="">1,812,421</h5>
                                             </div>
                                         </div>
                                     </li>
                                 ))
                             }
+                            <li className="text-sm">
+                                <Link href="#">
+                                    <a href="" className="underline text-dark-white/70">Show More</a>
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                     <div className="w-full">
-                        <h1 className=" text-2xl text-white font-bold mb-5">Related Artists</h1>
+                        <h1 className=" text-2xl text-white font-bold mb-3">Related Artists</h1>
                         <ul className='flex flex-wrap gap-5 md:flex-col'>
                             {
                                 Array(5).fill('').map((v, idx) => (
@@ -55,7 +84,7 @@ const Music = () => {
                                         <div className="">
                                             <Image src={banner} alt={'Music Photo'} width={50} height={50} className="rounded-full" />
                                         </div>
-                                        <h2 className="px-2 font-bold">Issues</h2>
+                                        <h2 className="pl-5 font-bold text-dark-white">Issues</h2>
                                     </li>
                                 ))
                             }
@@ -72,9 +101,9 @@ const Music = () => {
                         <div className="pl-5 flex flex-col justify-between">
                             <h2 className="">2016</h2>
                             <h1 className="text-3xl text-dark-white font-bold">Dissonants</h1>
-                            <div className="flex">
+                            <div className="flex items-center">
                                 <div className="text-green-500">Save</div>
-                                <div className=""><BsThreeDotsVertical /></div>
+                                <div className="pl-6"><BsThreeDotsVertical /></div>
                             </div>
                         </div>
                     </div>
@@ -97,26 +126,27 @@ const Music = () => {
                         {/* Playing Progress */}
                         <div className="w-full">
                             <div className="flex items-center">
-                                <span className="pr-5 text-sm">0:59</span>
+                                <span className="pr-5 text-sm">{`${ (currentTime /60).toFixed(0) }: ${((currentTime / 60) - (currentTime / 60).toFixed(0)).toFixed(2).replace(/^(0.)/,'')}`}</span>
                                 <div className="w-full lg:w-36 h-1 bg-dark-pri/50 rounded-full overflow-hidden">
                                     <div className="w-3/5 h-full bg-dark-pri"></div>
                                 </div>
-                                <span className="pl-5 text-sm">2:35</span>
+                                <span className="pl-5 text-sm">{audio ? `${(duration / 60).toFixed(0)}:${((duration / 60) - (duration / 60).toFixed(0)).toFixed(2).replace(/^(0.)/,'')}` : 0}</span>
                             </div>
                         </div>
                         {/* Player Handler */}
                         <div className="w-full py-2 flex items-center justify-between">
+                            
                             <div className="px-2">
                                 <BsShuffle />
                             </div>
                             <div className="px-2">
                                 <IoPlaySkipBackSharp />
                             </div>
-                            <div onClick={() => setPlay(!play)} className="w-8 h-8 px-2 transition-all duration-300 ease-out cursor-pointer rounded-full bg-dark-white flex justify-center items-center text-dark">
+                            <div onClick={() => setPlay(prev => !prev)} className="w-8 h-8 px-2 transition-all duration-300 ease-out cursor-pointer rounded-full bg-dark-white flex justify-center items-center text-dark">
                                 {
                                     play ? 
-                                    <IoPlaySharp />:
-                                    <IoPause />
+                                    <IoPause />:
+                                    <IoPlaySharp />
                                 }
                             </div>
                             <div className="px-2">
@@ -136,8 +166,8 @@ const Music = () => {
                             </div>
                             <div className="flex items-center px-3">
                                 <GiSpeaker />
-                                <div className=" rounded-full">
-                                    <input type="range" className="w-20 h-1 focus:outline-none focus:shadow-none" />
+                                <div className="flex items-center">
+                                    <input type="range" value={volume} onChange={(e) => setVolume(e.target.value)} className="w-20 h-0.5 focus:outline-none focus:shadow-none slider-thumb" />
                                 </div>
                             </div>
                             <div className="font-bold text-2xl">
