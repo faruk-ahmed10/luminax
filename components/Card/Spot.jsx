@@ -64,7 +64,7 @@ const Spot = () => {
                             <h3 className="text-xs font-semibold text-dark-white/90 pb-2">{itm.title}</h3>
                             <div className="">
                                 <span className="font-semibold text-dark-white">{itm.token_amount}</span>
-                                <span className="uppercase p-2 mx-2 bg-dark-pri/90 bg-opacity-50 text-white rounded-md font-bold text-xs">LUMIX</span>
+                                <span className="uppercase p-2 mx-2 bg-dark-pri/40 bg-opacity-50 text-white rounded-md font-bold text-xs">LUMIX</span>
                             </div>
                             <h5 className="text-tiny font-medium">${itm.balance}</h5>
                         </div>
