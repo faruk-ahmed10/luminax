@@ -1,13 +1,18 @@
 import { MdLightMode } from 'react-icons/md';
-
+import { IoMenu } from 'react-icons/io5';
+import { useContext } from 'react';
+import { SidebarContext } from '../../context/context';
 
 
 const Header = ({title}) => {
+
+    const { sidebar, setSidebar } = useContext(SidebarContext);
 
     return (
         <div className="w-full">
             <div className="w-full py-5 flex justify-between items-center">
                 <div className="flex items-center">
+                    <IoMenu onClick={() => setSidebar(!sidebar)} className='text-4xl md:hidden' />
                     <h1 className="text-3xl font-bold text-white">{title}</h1>
                     <h5 className="text-xs font-semibold text-dark-sec ml-5 mt-[6px] hidden md:block">How it works?</h5>
                 </div>

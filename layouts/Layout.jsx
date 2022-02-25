@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Sidebar from "../components/Sidebar";
+import { SidebarContext } from "../context/context";
 
 
 
 const Layout = ({children}) => {
 
-    const [sidebar, setSidebar] = useState(true);
+    const { sidebar, setSidebar } = useContext(SidebarContext);
 
     return (
         <div className="w-full flex">

@@ -9,14 +9,19 @@ import Link from 'next/link';
 
 import binance from '../../assets/img/binance.svg';
 import digibyte from '../../assets/img/digibyte.svg';
+import { useContext } from "react";
+import { SidebarContext } from "../../context/context";
 
 
-const Sidebar = ({closeClicked}) => {
+const Sidebar = () => {
+
+    const { sidebar, setSidebar } = useContext(SidebarContext);
+
     return (
         <div className={`w-[250px] h-full bg-dark-gray min-h-screen shadow-lg`}>
             <div className="relative w-full pl-4 h-20 flex items-center">
                 <Image src={logo} alt={"LuminaX Logo"} />
-                <div onClick={closeClicked} className="absolute top-2 right-2 text-2xl text-red-500 cursor-pointer md:hidden">
+                <div onClick={() => setSidebar(!sidebar)} className="absolute top-2 right-2 text-2xl text-red-500 cursor-pointer md:hidden">
                     <IoCloseSharp />
                 </div>
             </div>
