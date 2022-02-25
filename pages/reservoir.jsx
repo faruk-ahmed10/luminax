@@ -1,7 +1,7 @@
 import Buy from "../components/Reservoir/Buy";
 import Header from "../components/Header";
 import Stats from "../components/Reservoir/Stats";
-import Spot from "../components/Card/Spot";
+import Spot from "../components/Reservoir/Spot";
 import Sell from "../components/Reservoir/Sell";
 
 

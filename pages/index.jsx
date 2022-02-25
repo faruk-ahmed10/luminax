@@ -1,4 +1,4 @@
-import Spot from "../components/Card/Spot";
+import Spot from "../components/Faucet/Spot";
 import AboutLumix from "../components/Faucet/About";
 import Deposit from "../components/Faucet/Deposit";
 import GetBuddy from "../components/Faucet/GetBuddy";

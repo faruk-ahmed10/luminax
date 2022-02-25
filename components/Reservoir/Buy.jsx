@@ -7,10 +7,10 @@ const Buy = () => {
             <h1 className="font-semibold text-dark-white">Buy and Deposit</h1>
             <div className="">
                 <div htmlFor="slimpage" className="text-sm py-2">Slippage</div>
-                <div className="w-full rounded-lg border-2 border-dark-pri/40 flex text-sm items-center overflow-hidden">
-                    <input type="number" className="bg-dark-gray flex-1 px-2 py-1 outline-none" />
-                    <span className="percentage px-3 border-l border-dark-pri/40">%</span>
-                    <button className="px-2 py-1 bg-dark-sec text-dark">Auto slippage</button>
+                <div className="w-full rounded-lg flex text-sm items-center overflow-hidden">
+                    <input type="number" className="bg-dark-gray rounded-l-lg border-l-2 font-medium text-dark-white border-y-2 border-dark-pri/40 flex-1 px-3 py-2 outline-none" />
+                    <div className="percentage px-3 py-2 border-l border-y-2 border-dark-pri/40">%</div>
+                    <button className="px-2 py-2 bg-dark-sec border-2 border-dark-sec text-dark">Auto slippage</button>
                 </div>
             </div>
             <div className="pt-4">
@@ -18,9 +18,9 @@ const Buy = () => {
                     <div className="">Amount</div>
                     <div className=""><span className="text-dark-white  ">BNB Balance:</span> 4500.7858</div>
                 </div>
-                <div className="w-full rounded-lg border-2 border-dark-pri/40 flex text-sm items-center overflow-hidden">
-                    <input type="number" className="bg-dark-gray flex-1 px-2 py-1 outline-none" />
-                    <button className="px-2 py-1 bg-dark-sec text-dark">Max</button>
+                <div className="w-full rounded-lg flex text-sm items-center overflow-hidden">
+                    <input type="number" className="bg-dark-gray rounded-l-lg border-l-2 font-medium text-dark-white border-y-2 border-dark-pri/40 flex-1 px-3 py-2 outline-none" />
+                    <button className="px-2 py-2 bg-dark-sec text-dark border-2 border-dark-sec">Max</button>
                 </div>
             </div>
             <div className="flex justify-between text-sm py-4">
