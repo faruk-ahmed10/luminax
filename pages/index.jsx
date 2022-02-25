@@ -5,10 +5,10 @@ import GetBuddy from "../components/Faucet/GetBuddy";
 import PlayerLookup from "../components/Faucet/PlayerLookup";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import Head from 'next/head'
+import Image from 'next/image'
 
-
-
-const Faucet = () => {
+export default function Home() {
     
 
     return (
@@ -24,5 +24,3 @@ const Faucet = () => {
         </div>
     )
 }
-
-export default Faucet;
