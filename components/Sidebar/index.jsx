@@ -11,25 +11,23 @@ import binance from '../../assets/img/binance.svg';
 import digibyte from '../../assets/img/digibyte.svg';
 
 
-const Sidebar = () => {
+const Sidebar = ({closeClicked}) => {
     return (
         <div className={`w-[250px] h-full bg-dark-gray min-h-screen shadow-lg`}>
             <div className="relative w-full pl-4 h-20 flex items-center">
                 <Image src={logo} alt={"LuminaX Logo"} />
-                <div className="absolute top-2 right-2 text-2xl text-red-500 cursor-pointer md:hidden">
+                <div onClick={closeClicked} className="absolute top-2 right-2 text-2xl text-red-500 cursor-pointer md:hidden">
                     <IoCloseSharp />
                 </div>
             </div>
             <ul className="w-full pl-4 pt-5">
                 {
                     ['Swap', 'Faucet', 'Reservoir'].map((itm, idx) => (
-                        <Link href={itm.toLowerCase()} key={idx}>
-                            <a>
+                        <Link href={itm.toLowerCase()} key={idx} passHref>
                                 <li className="group mb-5 flex items-center text-dark-pri font-bold text-sm hover:text-dark-sec cursor-pointer transition-all duration-100 ease-in-out">
                                     <div className="w-3 h-3 ml-1 rounded bg-dark-pri group-hover:bg-dark-sec transition-all duration-300 ease-in-out"></div>
                                     <p className="pl-5">{itm}</p>
                                 </li>
-                            </a>
                         </Link>
                     ))
                 }
