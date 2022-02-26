@@ -48,12 +48,35 @@ const musicData = [
     },
 ];
 
+const artistsData = [
+    {
+        title: 'Issues',
+        imgUrl: musictag2
+    },
+    {
+        title: 'Dreams on Dreamer',
+        imgUrl: musictag2
+    },
+    {
+        title: 'Isles & Glaciers',
+        imgUrl: musictag2
+    },
+    {
+        title: 'Jamies Elsewhere',
+        imgUrl: musictag2
+    },
+    {
+        title: 'Secrets',
+        imgUrl: musictag2
+    },
+];
+
 const Music = () => {
 
     const [play, setPlay] = useState(false);
     const [volume, setVolume] = useState(50);
     const [currentTime, setCurrentTime] = useState(0);
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState(1);
     const audio = useRef( typeof Audio !== "undefined" ? new Audio("http://localhost:3000/bensound-dubstep.mp3") : undefined );
     const [duration, setDuration] = useState();
     
@@ -94,7 +117,7 @@ const Music = () => {
                                         <div className="w-full flex">
                                             <div className="flex items-center">
                                                 <span className="px-2">{idx}</span>
-                                                {selected ? <span className="px-2 text-sky-600 text-2xl"><MdDone/></span> : <span className="px-2 text-xl"><AiOutlinePlus/></span> }
+                                                {selected === idx ? <span className="px-2 text-sky-600 text-2xl"><MdDone/></span> : <span onClick={() => setSelected(idx)} className="px-2 text-xl"><AiOutlinePlus/></span> }
                                             </div>
                                             <div className="flex flex-1">
                                                 <h3 className="flex-1 font-semibold text-dark-white">{ms.title}</h3>
@@ -115,12 +138,12 @@ const Music = () => {
                         <h1 className=" text-2xl text-white font-bold mb-3">Related Artists</h1>
                         <ul className='flex flex-wrap gap-5 md:flex-col'>
                             {
-                                Array(5).fill('').map((v, idx) => (
+                                artistsData.map((at, idx) => (
                                     <li key={idx} className="flex items-center">
                                         <div className="">
-                                            <Image src={banner} alt={'Music Photo'} width={50} height={50} className="rounded-full" />
+                                            <Image src={at.imgUrl} alt={'Music Photo'} width={50} height={50} className="rounded-full" />
                                         </div>
-                                        <h2 className="pl-5 font-bold text-dark-white">Issues</h2>
+                                        <h2 className="pl-5 font-bold text-dark-white">{at.title}</h2>
                                     </li>
                                 ))
                             }
