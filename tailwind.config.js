@@ -7,6 +7,10 @@ module.exports = {
     "./layouts/**/*.{js,ts,jsx,tsx}",   
   ],
   theme: {
+    screens: {
+      'xs': '480px',
+      ...defaultTheme.screens,
+    },
     extend: {
       fontFamily: {
         'sans': ['Jost', ...defaultTheme.fontFamily.sans]

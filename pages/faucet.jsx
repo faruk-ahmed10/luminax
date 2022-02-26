@@ -6,6 +6,8 @@ import PlayerLookup from "../components/Faucet/PlayerLookup";
 import Header from "../components/Header";
 import Head from 'next/head'
 import Image from 'next/image'
+import gsap from 'gsap';
+import { useEffect, useRef } from "react";
 
 export default function Home() {
     
@@ -14,7 +16,7 @@ export default function Home() {
         <div className="w-full px-8">
                 <Header title={'Faucet'} />
                 <Spot />
-                <div className="my-8 w-full grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                <div className="my-8 xs:grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
                     <Deposit />
                     <GetBuddy />
                     <PlayerLookup />

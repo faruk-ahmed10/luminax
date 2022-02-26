@@ -1,14 +1,22 @@
-
+import gsap from 'gsap';
+import { useEffect, useRef } from 'react';
 
 
 const PlayerLookup = () => {
+
+    const playerRef = useRef();
+
+    useEffect(()=> {
+        gsap.from(playerRef.current, {x: 100, duration: 1, delay: 1});
+    },[]);
+
     return (
-        <div className="w-full  rounded-lg bg-dark-gray p-8">
+        <div ref={playerRef} className="w-full  rounded-lg bg-dark-gray p-8 mt-5 xs:mt-0">
             <div className="">
-                <h1 className="font-medium text-dark-white pb-8">Get a buddy</h1>
+                <h1 className="font-medium text-dark-white pb-8">Player Lookup</h1>
                 <div className="w-full rounded-lg flex overflow-hidden">
-                    <input type="text" name="" id="" className="w-full outline-none rounded-l-lg border-y-2 border-l-2 border-dark-pri/40 bg-transparent py-2 px-2 text-xs placeholder:text-dark-pri/40" placeholder="Address" />
-                    <button className="bg-dark-sec text-dark-black text-xs px-4">Submit</button>
+                    <input type="text" name="" id="" className="w-full outline-none rounded-l-lg border-y-2 border-l-2 border-dark-pri/40 bg-transparent py-2 px-2 text-xs placeholder:text-dark-pri/40 focus:bg-dark/30" placeholder="Address" />
+                    <button className="bg-dark-sec text-dark-black text-xs px-4 hover:bg-dark-sec/80">Submit</button>
                 </div>
                 <p className="text-sm my-4">
                     A buddy is how you get on LuminaX. Good things should not happen in isolation.

@@ -9,18 +9,20 @@ import Link from 'next/link';
 
 import binance from '../../assets/img/binance.svg';
 import digibyte from '../../assets/img/digibyte.svg';
-import { useContext } from "react";
+import { useContext, useRef, useEffect   } from "react";
 import { SidebarContext } from "../../context/context";
 import { useRouter } from "next/router";
+import gsap from 'gsap';
 
 
 const Sidebar = () => {
 
     const router = useRouter();
     const { sidebar, setSidebar } = useContext(SidebarContext);
-    console.log("Router: ", router.pathname);
+    
+
     return (
-        <div className={`w-[250px] h-full bg-dark-gray min-h-screen shadow-lg`}>
+        <div className={`w-[250px] h-full bg-dark-gray min-h-screen shadow-lg z-50`}>
             <div className="relative w-full pl-4 h-20 flex items-center">
                 <Image src={logo} alt={"LuminaX Logo"} />
                 <div onClick={() => setSidebar(!sidebar)} className="absolute top-2 right-2 text-2xl text-red-500 cursor-pointer md:hidden">
@@ -32,7 +34,7 @@ const Sidebar = () => {
                     ['Swap', 'Faucet', 'Reservoir'].map((itm, idx) => (
                         <Link href={itm.toLowerCase()} key={idx} passHref>
                                 <li className={`group mb-5 flex items-center text-dark-pri font-bold text-sm hover:text-dark-sec cursor-pointer transition-all duration-100 ease-in-out ${router.pathname === '/' + itm.toLowerCase() ? 'text-dark-sec': '' }`}>
-                                    <div className={`w-3 h-3 ml-1 rounded bg-dark-pri group-hover:bg-dark-sec transition-all duration-300 ease-in-out ${router.pathname === '/' + itm.toLowerCase() ? 'text-dark-sec': '' }`}></div>
+                                    <div className={`w-3 h-3 ml-1 rounded bg-dark-pri group-hover:bg-dark-sec transition-all duration-300 ease-in-out ${router.pathname === '/' + itm.toLowerCase() ? 'bg-dark-sec': '' }`}></div>
                                     <p className="pl-5">{itm}</p>
                                 </li>
                         </Link>

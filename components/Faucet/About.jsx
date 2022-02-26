@@ -1,9 +1,29 @@
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 import about from '../../assets/img/about.png';
 
 
 const AboutLumix = () => {
+
+    const aboutRef = useRef();
+
+    useEffect(()=> {
+
+        gsap.from(aboutRef.current, { 
+            scrollTrigger: {
+                trigger: aboutRef.current,
+                start: "center bottom"
+            }, 
+            y: 50,
+            duration: 1
+            });
+
+    },[]);
+
     return (
         <div className="w-full flex flex-col md:flex-row p-10 my-5 bg-dark-gray rounded-lg">
             <div className="pr-5 grow">
