@@ -7,7 +7,6 @@ import { useState } from "react";
 
 
 
-
 const Swap = () => {
 
     const [autoRecharge, setAutoRecharge] = useState(true);
@@ -15,7 +14,7 @@ const Swap = () => {
     return (
         <div className="w-full px-8">
             <Header title={'Swap'} />
-            <div className="w-full flex flex-col md:flex-row gap-5">
+            <div className="w-full lg:flex gap-5">
                 <Buy />
                 <Sell />
             </div>

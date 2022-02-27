@@ -14,7 +14,7 @@ const Header = ({title}) => {
                 <div className="flex items-center">
                     <IoMenu onClick={() => setSidebar(!sidebar)} className='text-3xl xs:text-4xl md:hidden' />
                     <h1 className="text-xl xs:text-3xl font-bold text-white">{title}</h1>
-                    <h5 className="text-xs font-semibold text-dark-sec ml-5 mt-[6px] hidden md:block">How it works?</h5>
+                    <h5 className="text-xs font-semibold text-dark-sec ml-5 mt-[6px] hidden lg:block">How it works?</h5>
                 </div>
                 <div className="flex items-center">
                     <div className="px-5 hidden md:block">

@@ -27,12 +27,12 @@ const Stats = () => {
     return (
         <div className="w-full my-8 bg-dark-gray p-8 rounded-lg">
             <h1 className="font-medium text-3xl text-dark-white">Stats</h1>
-            <ul className="flex justify-between flex-wrap pt-8">
+            <ul className="pt-8 sm:grid grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                     statsData.map((itm, idx) => (
                         <li className="" key={`balace_item${idx}`}>
                             <h3 className="text-xs font-semibold text-dark-white pb-2">{itm.title}</h3>
-                            <div className="">
+                            <div className="flex justify-between items-center">
                                 <span className="font-semibold text-dark-white">{itm.token_amount}</span>
                                 <span className="uppercase p-2 mx-2 bg-dark-pri/20 text-white rounded-md font-bold text-xs">{itm.token}</span>
                             </div>

@@ -11,7 +11,7 @@ const Reservoir = () => {
         <div className="w-full px-8">
             <Header title={'Reservoir'} />
             <Spot />
-            <div className="flex flex-col md:flex-row justify-between gap-5 mt-8">
+            <div className="w-full lg:flex flex-row gap-5 mt-8">
                 <Buy />
                 <Sell />
             </div>
