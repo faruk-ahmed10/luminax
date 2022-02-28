@@ -13,7 +13,7 @@ const Buy = () => {
                 <div className="w-full rounded-lg flex text-sm items-center overflow-hidden">
                     <input type="text" className="w-full focus:bg-dark/10 bg-dark-gray rounded-l-lg border-l-2 font-medium text-dark-white border-y-2 border-dark-pri/40 flex-1 px-3 py-2 outline-none" />
                     <div className="percentage px-3 py-2 border-l border-y-2 border-dark-pri/40">%</div>
-                    <button className="outline-none px-2 py-2 bg-dark-sec hover:bg-dark-sec/80 border-2 border-dark-sec text-dark">Auto slippage</button>
+                    <button className="outline-none px-2 py-2 bg-dark-sec hover:bg-dark-sec/80 border-2 border-dark-sec hover:border-dark-sec/30 text-dark">Auto slippage</button>
                 </div>
             </div>
             <div className="pt-4">
@@ -23,7 +23,7 @@ const Buy = () => {
                 </div>
                 <div className="w-full rounded-lg flex text-sm items-center overflow-hidden">
                     <input type="text" className="w-full bg-dark-gray focus:bg-dark/10 rounded-l-lg border-l-2 font-medium text-dark-white border-y-2 border-dark-pri/40 flex-1 px-3 py-2 outline-none" />
-                    <button className="outline-none px-2 py-2 bg-dark-sec hover:bg-dark-sec/50 text-dark border-2 border-dark-sec">Max</button>
+                    <button className="outline-none px-2 py-2 bg-dark-sec hover:bg-dark-sec/80 text-dark border-2 border-dark-sec hover:border-dark-sec/30">Max</button>
                 </div>
             </div>
             <div className="xs:flex justify-between text-sm py-4">

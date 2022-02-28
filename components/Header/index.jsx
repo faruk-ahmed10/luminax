@@ -24,7 +24,7 @@ const Header = ({title}) => {
                         </select>
                     </div>
                     <div className="xs:px-5">
-                        <button className="text-tiny xs:text-xs border-2 border-dark-pri text-white px-3 py-1 xs:px-4 xs:py-3 rounded-full font-bold">
+                        <button className="text-tiny xs:text-xs border-2 border-dark-pri hover:border-dark-sec text-white hover:text-dark-sec px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold">
                             Connect Wallet
                         </button>
                     </div>

@@ -11,7 +11,7 @@ const Stats = () => {
                     Reservoir is The LUMIX Network’s solution for players that want benefit from non-inflationary yield farming through adding liquidity to DRIP. Here are the numbers...
                 </p>
             </div>
-            <div className="xs:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 pt-8">
+            <div className="xs:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 pt-8">
                 <div className="mt-5">
                     <h3 className="text-xs font-semibold text-dark-white/90 pb-2">Players</h3>
                     <div className="">
