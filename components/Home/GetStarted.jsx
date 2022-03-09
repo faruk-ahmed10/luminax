@@ -4,6 +4,26 @@ import { BsArrowRight } from 'react-icons/bs';
 // Importing assets
 import powerline from '../../assets/img/powerline.png';
 
+const getData = [
+    {
+        title: 'Install Metamask',
+        description: 'Download Metamask extension on a desktop browser like Chrome. You can store &amp; manage your Lumix in this Binance Chain wallet.'
+    },
+    {
+        title: 'Buy BNB',
+        description: 'Download Metamask extension on a desktop browser like Chrome. You can store & manage your Lumix in this Binance Chain wallet.'
+    },
+    {
+        title: 'Swap for Lumix',
+        description: 'Download Metamask extension on a desktop browser like Chrome. You can store & manage your Lumix in this Binance Chain wallet.'
+    },
+    {
+        title: 'Deposit Lumix',
+        description: 'Download Metamask extension on a desktop browser like Chrome. You can store &amp; manage your Lumix in this Binance Chain wallet.'
+    },
+];
+
+
 const GetStarted = () => {
     
     return (
@@ -19,12 +39,12 @@ const GetStarted = () => {
                 </h1>
                 <div className="sm:grid gap-5 grid-cols-2 lg:grid-cols-4">
                     {
-                        Array(4).fill('').map((v, idx) => (
+                        getData.map((v, idx) => (
                             <div key={idx} className="bg-dark-white rounded-lg mb-5">
                                 <div className="px-5 py-10">
                                     <h1 className="font-bold text-xl text-dark-black">
-                                        <span className="text-[#0077FF]">1.</span>
-                                        Install Metamask
+                                        <span className="text-[#0077FF]">{idx + 1}.</span>
+                                        {v.title}
                                     </h1>
                                     <p className="text-dark/80 mt-2">
                                         Download Metamask extension on a desktop 
