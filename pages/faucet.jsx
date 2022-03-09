@@ -8,8 +8,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import gsap from 'gsap';
 import { useEffect, useRef } from "react";
+import Layout from '../layouts/Layout';
 
-export default function Home() {
+export default function Faucet() {
     
 
     return (
@@ -25,3 +26,8 @@ export default function Home() {
         </div>
     )
 }
+
+Faucet.getLayout = (page) => (
+    <Layout>
+        {page}
+    </Layout>);

@@ -7,14 +7,9 @@ import { useEffect, useRef } from 'react';
 
 const Deposit = () => {
 
-    const depRef = useRef();
-
-    useEffect(()=> {
-        gsap.from(depRef.current, {x: 100, duration: 1, delay: 1 });
-    },[]);
     
     return (
-        <div ref={depRef} className="w-full rounded-lg bg-dark-gray p-8">
+        <div className="w-full rounded-lg bg-dark-gray p-8">
             <div className="">
                 <h1 className="font-medium text-dark-white pb-2">Deposit</h1>
                 <div className="text-right text-dark-white text-xs pb-2">LUMIX Balance: <span className="text-dark-pri/40">{234.9039393939399}</span></div>

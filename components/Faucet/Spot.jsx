@@ -35,14 +35,9 @@ const Spot = () => {
 
     const [autoRecharge, setAutoRecharge] = useState(true);
 
-    const spotRef = useRef();
-
-    useEffect(()=> {
-        gsap.from(spotRef.current, {y: 50, duration: 2, zIndex: 0});
-    },[]);
-
+   
     return (
-        <div ref={spotRef} className="w-full bg-dark-gray p-8 rounded-lg z-0">
+        <div  className="w-full bg-dark-gray p-8 rounded-lg z-0">
             <div className="flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-dark-white">Spot</h1>
                 <div className="flex items-center">

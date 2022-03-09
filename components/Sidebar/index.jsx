@@ -20,12 +20,13 @@ const Sidebar = () => {
     const router = useRouter();
     const { sidebar, setSidebar } = useContext(SidebarContext);
     
+    const handleSidebar = () => setSidebar(!sidebar);
 
     return (
-        <div className={`w-[250px] h-full bg-dark-gray min-h-screen shadow-lg z-50`}>
+        <div onClick={(e) => e.stopPropagation()} className={`w-[250px] h-full bg-dark-gray min-h-screen shadow-lg z-50`}>
             <div className="relative w-full pl-4 h-20 flex items-center">
                 <Image src={logo} alt={"LuminaX Logo"} />
-                <div onClick={() => setSidebar(!sidebar)} className="absolute top-2 right-2 text-2xl text-red-500 cursor-pointer md:hidden">
+                <div onClick={handleSidebar} className="absolute top-2 right-2 text-2xl text-red-500 cursor-pointer md:hidden">
                     <IoCloseSharp />
                 </div>
             </div>
@@ -33,7 +34,7 @@ const Sidebar = () => {
                 {
                     ['Swap', 'Faucet', 'Reservoir'].map((itm, idx) => (
                         <Link href={itm.toLowerCase()} key={idx} passHref>
-                                <li className={`group mb-5 flex items-center text-dark-pri font-bold text-sm hover:text-dark-sec cursor-pointer transition-all duration-100 ease-in-out ${router.pathname === '/' + itm.toLowerCase() ? 'text-dark-sec': '' }`}>
+                                <li onClick={handleSidebar} className={`group mb-5 flex items-center text-dark-pri font-bold text-sm hover:text-dark-sec cursor-pointer transition-all duration-100 ease-in-out ${router.pathname === '/' + itm.toLowerCase() ? 'text-dark-sec': '' }`}>
                                     <div className={`w-3 h-3 ml-1 rounded bg-dark-pri group-hover:bg-dark-sec transition-all duration-300 ease-in-out ${router.pathname === '/' + itm.toLowerCase() ? 'bg-dark-sec': '' }`}></div>
                                     <p className="pl-5">{itm}</p>
                                 </li>
