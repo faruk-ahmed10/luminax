@@ -1,13 +1,16 @@
 import '../styles/globals.css'
-import Layout from '../layouts/Layout'
 import SidebarProvider from '../context/context'
 
+
 function MyApp({ Component, pageProps }) {
+
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <SidebarProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+        {
+          getLayout(<Component {...pageProps} />)
+        }
     </SidebarProvider>
   )
 }

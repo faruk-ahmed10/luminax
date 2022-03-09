@@ -5,6 +5,7 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",   
     "./layouts/**/*.{js,ts,jsx,tsx}",   
+    "./landing/**/*.{js,ts,jsx,tsx}",   
   ],
   theme: {
     screens: {
@@ -13,7 +14,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'sans': ['Jost', ...defaultTheme.fontFamily.sans]
+        'sans': ['Jost', ...defaultTheme.fontFamily.sans],
+        'home': ['Space Grotesk']
       },
       colors: {
         "dark": "#040415",
@@ -22,12 +24,14 @@ module.exports = {
         "dark-sec": "#FFDAAE",
         "dark-ter": "#CDB4DB",
         "dark-white": "#F8F8F9",
-        "dark-black": "#040415"
+        "dark-black": "#040415",
       },
       fontSize: {
-        "tiny": "0.625rem"
-      }
+        "tiny": "0.625rem",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }

@@ -4,14 +4,10 @@ import { useEffect, useRef } from 'react';
 
 const PlayerLookup = () => {
 
-    const playerRef = useRef();
-
-    useEffect(()=> {
-        gsap.from(playerRef.current, {x: 100, duration: 1, delay: 1});
-    },[]);
+    
 
     return (
-        <div ref={playerRef} className="w-full  rounded-lg bg-dark-gray p-8 mt-5 xs:mt-0">
+        <div  className="w-full  rounded-lg bg-dark-gray p-8 mt-5 xs:mt-0">
             <div className="">
                 <h1 className="font-medium text-dark-white pb-8">Player Lookup</h1>
                 <div className="w-full rounded-lg flex overflow-hidden">

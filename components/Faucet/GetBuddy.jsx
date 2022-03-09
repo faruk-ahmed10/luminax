@@ -3,14 +3,10 @@ import { useRef, useEffect } from 'react';
 
 const GetBuddy = () => {
 
-    const buddyRef = useRef();
-
-    useEffect(()=> {
-        gsap.from(buddyRef.current, {x: 100, duration: 1, delay: 1});
-    },[]);
+    
 
     return (
-        <div ref={buddyRef} className="w-full rounded-lg bg-dark-gray p-8 mt-5 xs:mt-0">   
+        <div className="w-full rounded-lg bg-dark-gray p-8 mt-5 xs:mt-0">   
             <div className="">
                 <h1 className="font-medium text-dark-white pb-8">Get a buddy</h1>
                 <div className="w-full rounded-lg flex overflow-hidden">

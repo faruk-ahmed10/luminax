@@ -1,25 +1,31 @@
-import Spot from "../components/Faucet/Spot";
-import AboutLumix from "../components/Faucet/About";
-import Deposit from "../components/Faucet/Deposit";
-import GetBuddy from "../components/Faucet/GetBuddy";
-import PlayerLookup from "../components/Faucet/PlayerLookup";
-import Header from "../components/Header";
-import Head from 'next/head'
-import Image from 'next/image'
+import Banner from "../components/Home/Banner";
+import Faq from "../components/Home/Faq";
+import Feature from "../components/Home/Feature";
+import Footer from "../components/Home/Footer";
+import GetStarted from "../components/Home/GetStarted";
+import Header from "../components/Home/Header";
+import Hero from "../components/Home/Hero";
+import Mission from "../components/Home/Mission";
+import SocialBanner from "../components/Home/Social";
+import Stream from "../components/Home/Stream";
 
-export default function Home() {
-    
 
+
+const Home = () => {
     return (
-        <div className="w-full px-8">
-                <Header title={'Faucet'} />
-                <Spot />
-                <div className="my-8 w-full grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-                    <Deposit />
-                    <GetBuddy />
-                    <PlayerLookup />
-                </div>
-                <AboutLumix />
+        <div className="bg-[#12141D] font-home">
+            <Header />
+            <Hero />
+            <Mission />
+            <Stream />
+            <Feature />
+            <Banner />
+            <GetStarted />
+            <Faq />
+            <SocialBanner />
+            <Footer />
         </div>
     )
 }
+
+export default Home;
