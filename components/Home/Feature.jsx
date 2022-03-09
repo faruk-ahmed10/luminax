@@ -24,7 +24,7 @@ const Feature = () => {
                     <div className="lg:ml-20 lg:w-1/2 mt-10 lg:mt-0">
                         <div className="flex justify-between items-center mb-5 font-bold md:text-xl text-dark-white/70 border-b-2 border-white/10">
                             <h4 className="relative cursor-pointer text-dark-sec pb-2 after:absolute after:content[''] after:left-0 after:top-full after:w-full after:h-0.5 after:bg-dark-sec">Music Lovers</h4>
-                            <h4 className="relative cursor-pointer pb-2 after:absolute after:content[''] after:left-0 after:top-full after:w-full after:h-0.5 after:bg-dark-sec">Upcoming artists</h4>
+                            <h4 className="relative cursor-pointer pb-2">Upcoming artists</h4>
                         </div>
                         <div className="">
                             <h1 className="font-bold text-xl md:text-4xl text-dark-white pt-6">
