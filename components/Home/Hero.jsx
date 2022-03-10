@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BsFillPlayCircleFill } from 'react-icons/bs';
+import { BsFillPlayCircleFill, BsArrowRight } from 'react-icons/bs';
 import { useRef, useEffect } from 'react';
 import gsap from "gsap";
 // Importing assets
@@ -31,7 +31,7 @@ const Hero = () => {
                     <Image src={mic} alt="Microphone" />
                 </div>
             </div>
-            <div className="absolute top-0 left-0 min-w-full max-h-full bg-dark/50">
+            <div className="absolute top-0 left-0 min-w-full max-w-full max-h-full bg-dark/50">
                 <div className="w-10/12 lg:w-1/2 mx-auto min-h-screen flex flex-col justify-center items-center">
                     <div ref={titleRef} className="text-center">
                         <h1 className="text-lg xs:text-3xl lg:text-6xl font-medium text-white lg:leading-[66px]">
@@ -42,7 +42,7 @@ const Hero = () => {
                         </h1>
                     </div>
                     <div ref={descRef} className="text-center">
-                        <p className="text-xs xs:text-sm lg:text-lg mt-7 mb-5">
+                        <p className="text-xs xs:text-sm lg:text-lg mt-7 mb-5 pt-2 text-white/70">
                             Lumix is a deflationary high reward contract powering
                             entertainment on the BSC network. 
                             This first of its kind protocol decentralises artists’ 
@@ -50,11 +50,11 @@ const Hero = () => {
                         </p>
                     </div>
                     <div ref={btnRef} className="text-center">
-                        <div className="my-5">
-                            <button className="w-56 text-sm px-6 py-2 mb-2 sm:mb-0 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Buy Lumix</button>
-                            <button className="w-56 text-sm px-6 py-2 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Join Telegram</button>
+                        <div className="xs:my-5 xs:flex">
+                            <button className="w-56 flex items-center justify-center text-sm px-6 py-3 mb-2 xs:mb-0 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Buy Lumix<span className="px-2 text-2xl"><BsArrowRight /></span></button>
+                            <button className="w-56 flex items-center justify-center text-sm px-6 py-3 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Join Telegram<span className="px-2 text-2xl"><BsArrowRight /></span></button>
                         </div>
-                        <div className="flex justify-center items-center text-dark-white">
+                        <div className="flex justify-center items-center text-dark-white mt-2 md:mt-0">
                             <div className="mr-3">
                                 <BsFillPlayCircleFill />
                             </div>

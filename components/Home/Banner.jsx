@@ -1,12 +1,29 @@
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 // Importing assets
 import bannerbottom from '../../assets/img/bannerbottom.png';
 
 const Banner = () => {
 
+    const bannerRef = useRef();
+
+
+    useEffect(() => {
+        gsap.from(bannerRef.current, {
+            scrollTrigger: {
+                trigger: bannerRef.current
+            },
+            opacity: 0,
+            x: '100%',
+            duration: 2
+        })
+    }, []);
     return (
-        <div className="w-[80%] relative flex mx-auto mt-20 md:mt-32 py-5 md:py-10 px-5 md:px-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-500">
+        <div ref={bannerRef} className="w-[80%] relative flex mx-auto mt-20 md:mt-32 py-5 md:py-10 px-5 md:px-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-500">
             <div className="md:w-1/2">
                 <h1 className="font-bold text-[40px] text-dark-white my-5">Upcoming Artist?</h1>
                 <p className="text-white/70 text-sm">

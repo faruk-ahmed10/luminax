@@ -13,23 +13,27 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Stream = () => {
 
-    const titleRef = useRef();
+    const titleRef = useRef(null);
+    const descRef = useRef(null);
+    const subRef = useRef(null);
+    const btnRef = useRef(null);
 
     useEffect(() => {
-        gsap.from(titleRef.current, {
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: titleRef.current
-            },
-            opacity: 0,
-            y: 5,
-            duration: 2
+            }
         });
+        tl.from(titleRef.current, { opacity: 0, duration: 2  });
+        tl.from(btnRef.current, { opacity: 0, x: '-100%' });
+        tl.from(subRef.current, { opacity: 0, x: '-100%', duration: 1 });
+        tl.from(descRef.current, { opacity: 0, x: '-100%', duration: 1 });
         
     },[]);
 
 
     return (
-        <div className="relative mt-20">
+        <div className="relative mt-20 pt-10">
             <div className="absolute -left-2 -bottom-2 opacity-25">
                 <Image src={dotwave} alt={'Dot Wave'} />
             </div>
@@ -38,7 +42,7 @@ const Stream = () => {
                     Stream-To-  
                     <span className="relative">
                         Earn 
-                        <span className="absolute -bottom-2 md:-bottom-4 left-0 w-full">
+                        <span className="absolute -bottom-2 md:-bottom-2 left-0 w-full">
                             <Image src={earnline} alt={'Mission Line Image'} />
                         </span>
                     </span>
@@ -47,13 +51,13 @@ const Stream = () => {
 
                     
                     <div className="md:w-1/2">
-                        <button className="border-2 border-dark-ter text-dark-ter uppercase rounded text-xs py-1 px-2 font-bold mb-5">
+                        <button ref={btnRef} className="border-2 border-dark-ter text-dark-ter uppercase rounded text-xs py-1 px-2 font-bold mb-5">
                             PASSIVE INCOME FOR FANS
                         </button>
-                        <h1 className="text-white font-bold text-4xl">
+                        <h1 ref={subRef} className="text-white font-bold text-4xl">
                             Lumix turns streaming into sustainable passive income for <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-700 to-dark-sec"> fans</span>. 
                         </h1>
-                        <p className="mt-5 text-white/40">
+                        <p ref={descRef} className="mt-5 text-white/70">
                             Lumix makes your money work for you without thinking you about it. I will complete this part later but you get the general idea of what’s going on here.
                         </p>
                     </div>

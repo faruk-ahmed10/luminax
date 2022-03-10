@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import FaqItem from './FaqItem';
-
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 const faqData = [
     {
@@ -28,12 +30,22 @@ const faqData = [
 
 const Faq = () => {
 
-    
+    const titleRef = useRef();
+
+    useEffect(() => {
+        gsap.from(titleRef.current, {
+            scrollTrigger: {
+                trigger: titleRef.current
+            },
+            opacity: 0,
+            duration: 3
+        })
+    }, []);
     
     return (
         <div id='faqs' className="px-[10%] mt-20">
             <div className="">
-                <h1 className="text-4xl text-center text-dark-white font-bold   ">
+                <h1 ref={titleRef} className="text-4xl text-center text-dark-white font-bold   ">
                     Frequently Asked Questions
                 </h1>
                 <div className="mt-10">

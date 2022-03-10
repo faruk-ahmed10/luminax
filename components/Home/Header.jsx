@@ -29,7 +29,7 @@ const Header = () => {
 
 
     return (
-        <header className="py-5 border-b-2 border-dark-pri/10">
+        <header className="sm:sticky top-0 shadow z-50 py-5 border-b-2 border-dark-pri/10 bg-[#12141D]">
             <div className="px-[5%] flex justify-between items-center">
                 <div className="pr-10 border-r border-dark-pri/30">
                     <Image src={logo} alt="Lumix Logo" />
