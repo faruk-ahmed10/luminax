@@ -39,11 +39,11 @@ const Header = ({title}) => {
 
 
     useEffect(() => {
-        // const providerOptions = {
-        //     binancechainwallet: {
-        //       package: true
-        //     }
-        //   };
+        const providerOptions = {
+            binancechainwallet: {
+              package: true
+            }
+          };
 
             web3ModalRef.current = new Web3Modal({
               network: 'mainnet', // optional
