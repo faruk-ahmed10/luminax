@@ -1,9 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import Image from 'next/image';
 import FaqItem from './FaqItem';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
+
+// Import assets
+import Ellipse from '../../assets/img/heroellipsetop.svg';
+
 
 const faqData = [
     {
@@ -43,8 +48,11 @@ const Faq = () => {
     }, []);
     
     return (
-        <div id='faqs' className="px-[10%] mt-20">
-            <div className="">
+        <div id='faqs' className="relative mt-20">
+            <div className="absolute left-1/2 -translate-x-1/2 z-5 -top-5 z-20 pt-10">
+                    <Image src={Ellipse} alt="Hero Ellipse" width={600} height={500} />
+            </div>
+            <div className="px-[10%]">
                 <h1 ref={titleRef} className="text-4xl text-center text-dark-white font-bold   ">
                     Frequently Asked Questions
                 </h1>
@@ -52,6 +60,9 @@ const Faq = () => {
                     {
                         faqData.map((v, idx) => <FaqItem key={idx} {...v} />)
                     }
+                    <div className="">
+                        <button className="text-dark-sec font-medium pl-5 my-5 text-xl">Load More</button>
+                    </div>
                 </div>
             </div>
         </div>

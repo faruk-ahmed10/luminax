@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { MdLightMode } from 'react-icons/md';
 import { IoMenu } from 'react-icons/io5';
 import { useContext } from 'react';
@@ -9,13 +9,34 @@ import Web3Modal from 'web3modal';
 
 
 
-
 const Header = ({title}) => {
-
+    const [address, setAddress] = useState(null);
     const { sidebar, setSidebar } = useContext(SidebarContext);
     const web3ModalRef = useRef()
     
     let provider;
+
+
+    const walletConnector = async () => {
+        
+        try{
+            provider = await web3ModalRef.current.connect();
+            console.log("Provider inside: ", provider);
+        }catch(e){
+            console.log("Error: ", e);
+            return;
+        }
+
+        const web3 = new Web3(provider);
+        const chainId = await web3.eth.getChainId();
+        const adrs = await web3.eth.getAccounts();
+        if(adrs){
+            setAddress(adrs[0]);
+        }
+    };
+
+
+
 
     useEffect(() => {
         // const providerOptions = {
@@ -32,32 +53,8 @@ const Header = ({title}) => {
             })
 
     },[]);
-    
-    
 
-    const walletConnector = async () => {
-        
-        try{
-            provider = await web3ModalRef.current.connect();
-            console.log("Provider inside: ", provider);
-        }catch(e){
-            console.log("Error: ", e);
-        }
-
-    };
-
-
-    const fetchWalletData = async () => {
-
-        const web3 = new Web3(provider);
-        const chainId = await web3.eth.getChainId();
-        console.log("ChainId: ", chainId);
-
-    };
-
-    console.log("Web3Modal: ", web3ModalRef.current);
-    console.log("Provider: ", provider);
-
+    console.log(address);
     return (
         <div className="w-full">
             <div className="w-full py-5 flex justify-between items-center">
@@ -74,11 +71,11 @@ const Header = ({title}) => {
                         </select>
                     </div>
                     <div className="xs:px-5">
-                        <button onClick={walletConnector} className="text-tiny xs:text-xs border-2 border-dark-pri hover:border-dark-sec text-white hover:text-dark-sec px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold">
-                            Connect Wallet
+                        <button onClick={!address ? walletConnector : null} className={`text-tiny xs:text-xs border-2 border-dark-pri text-white  px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold ${address ? '': 'hover:border-dark-sec hover:text-dark-sec'}`}>
+                            {address ? `${address.slice(0,7)}...` : 'Connect Wallet'}
                         </button>
                     </div>
-                    <div onClick={fetchWalletData} className="pl-5 text-3xl">
+                    <div className="pl-5 text-3xl">
                         <MdLightMode className='cursor-pointer hover:text-dark-sec' />
                     </div>
                 </div>
