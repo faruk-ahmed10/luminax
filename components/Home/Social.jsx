@@ -44,10 +44,10 @@ const SocialBanner = () => {
 
 
     return (
-        <div ref={socialRef} className="w-[80%] mx-auto mt-20 bg-gradient-to-r from-[#FF00CC] to-[#333399] rounded-lg">
+        <div ref={socialRef} className="w-[80%] mx-auto mt-20 mb-10 bg-gradient-to-r from-[#FF00CC] to-[#333399] rounded-lg">
             <div className="py-10 flex flex-col justify-center items-center">
                 <h1 className="pt-5 text-4xl sm:text-[80px] font-bold text-white">
-                    Join Socials    
+                    Join Socials  
                 </h1>
                 <div className="flex gap-2 pt-5 sm:pt-10">
                     {

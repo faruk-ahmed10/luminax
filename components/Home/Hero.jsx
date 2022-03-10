@@ -6,6 +6,9 @@ import gsap from "gsap";
 import musicdance from '../../assets/img/musicdance.png';
 import mic from '../../assets/img/microphone.png';
 import upline from '../../assets/img/upline.png';
+import TopEllipse from '../../assets/img/heroellipsetop.svg';
+import RightEllipse from '../../assets/img/heroellipseright.svg';
+import LeftEllipse from '../../assets/img/heroellipseleft.svg';
 
 const Hero = () => {
 
@@ -30,13 +33,22 @@ const Hero = () => {
                 <div className="absolute bottom-0 left-0 -mb-2">
                     <Image src={mic} alt="Microphone" />
                 </div>
+                <div className="absolute top-5 left-1/4 -mb-2">
+                    <Image src={TopEllipse} alt="Hero Ellipse" width={400} height={400} />
+                </div>
+                <div className="absolute right-10 bottom-10 -mb-2">
+                    <Image src={RightEllipse} alt="Hero Ellipse" width={400} height={400} />
+                </div>
+                <div className="absolute left-10 z-10 bottom-10 -mb-2">
+                    <Image src={LeftEllipse} alt="Hero Ellipse" width={400} height={400} />
+                </div>
             </div>
-            <div className="absolute top-0 left-0 min-w-full max-w-full max-h-full bg-dark/50">
+            <div className="absolute top-0 left-0 min-w-full max-w-full max-h-full bg-dark/30">
                 <div className="w-10/12 lg:w-1/2 mx-auto min-h-screen flex flex-col justify-center items-center">
                     <div ref={titleRef} className="text-center">
                         <h1 className="text-lg xs:text-3xl lg:text-6xl font-medium text-white lg:leading-[66px]">
                             Get paid 
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-700 to-dark-sec"> 1.1% ROI daily </span> 
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#C87716] to-dark-sec"> 1.1% ROI daily </span> 
                             backing your favorite <br/>
                             <span className="relative"> upcoming artistes <span className="absolute -bottom-7 left-0 min-w-full"><Image src={upline} alt="Under Style" /></span> </span>
                         </h1>

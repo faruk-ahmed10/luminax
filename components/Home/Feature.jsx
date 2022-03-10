@@ -10,7 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 import  powerline from '../../assets/img/powerline.png';
 import  headplay from '../../assets/img/headplay.png';
 import right from '../../assets/img/Right.png';
-
+import Ellipse from '../../assets/img/heroellipsetop.svg';
+import dotwave from '../../assets/img/dotwave.svg';
 
 
 // Data
@@ -77,8 +78,20 @@ const Feature = () => {
     },[]);
 
     return (
-        <div className="px-[10%] py-5 mt-20" id='feature'>
-            <div className="">
+        <div className="relative py-5 mt-20" id='feature'>
+            <div className="absolute left-0 transform top-1/2 opacity-10">
+                    <Image src={dotwave} alt="Hero Ellipse" />
+            </div>
+            <div className="absolute left-10 transform  -translate-y-full top-1/2">
+                    <Image src={Ellipse} alt="Hero Ellipse" width={600} height={500} />
+            </div>
+            <div className="absolute right-10 transform  -translate-y-full top-1/2">
+                    <Image src={Ellipse} alt="Hero Ellipse" width={600} height={500} />
+            </div>
+            <div className="absolute left-1/2 transform -translate-x-1/2  -translate-y-[20%] top-1/2">
+                    <Image src={Ellipse} alt="Hero Ellipse" width={600} height={500} />
+            </div>
+            <div className="px-[10%]">
                 <h1 ref={titleRef} className="font-bold text-center text-dark-white text-3xl sm:text-[80px] leading-[86px] mb-20">
                     <span className="relative">Powerful  
                         <span className="absolute -bottom-10 sm:-bottom-4 left-0 min-w-full">
@@ -119,7 +132,7 @@ const Feature = () => {
                                 Are you an artist looking to excel in your career? Are you looking for real life changing support and partnerships? Lumix Network offers you unequalled opportunity. Click below and request for sponsorship and you are on your way to success!!
                             </p>
                             }
-                            <button className="flex justify-center items-center text-sm px-6 py-4 mt-5 rounded-full hover:bg-dark-white bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">
+                            <button className="flex justify-center items-center cursor-pointer text-sm px-6 py-4 mt-5 rounded-full hover:bg-dark-white bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">
                                 Request Artist Sponsorship <span className="px-2"><BsArrowRight /></span>
                             </button>
                         </div>
@@ -164,7 +177,7 @@ const Feature = () => {
                         {
                             specialData.map((v, idx) => {
                                 return (
-                                    <div key={idx} className="text-center p-10 rounded-lg border-2 border-dark-white/10">
+                                    <div key={idx} className="text-center p-10 rounded-lg border-[3px] border-white/10">
                                         <div className={`flex justify-center text-4xl ${v.color}`}>
                                             {v.icon}
                                         </div>
