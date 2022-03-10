@@ -13,7 +13,7 @@ import Stream from "../components/Home/Stream";
 
 const Home = () => {
     return (
-        <div className="bg-[#12141D] font-home">
+        <div className="bg-[#12141D] font-home overflow-hidden">
             <Header />
             <Hero />
             <Mission />

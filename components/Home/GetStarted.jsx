@@ -1,5 +1,9 @@
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { BsArrowRight } from 'react-icons/bs';
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 // Importing assets
 import powerline from '../../assets/img/powerline.png';
@@ -26,12 +30,24 @@ const getData = [
 
 const GetStarted = () => {
     
+    const titleRef = useRef();
+
+    useEffect(() => {
+        gsap.from(titleRef.current, {
+            scrollTrigger: {
+                trigger: titleRef.current
+            },
+            opacity: 0,
+            duration: 3
+        })
+    }, []);
+
     return (
         <div id='how' className="px-[10%] mt-20">
             <div className="">
-                <h1 className="font-bold text-center text-dark-white text-4xl xs:text-5xl md:text-[80px] mb-10">
+                <h1 ref={titleRef} className="font-bold text-center text-dark-white text-4xl xs:text-5xl xs:leading-[56px] md:text-[80px] md:leading-[102px] mb-10">
                     <span className="relative">Get Started  
-                        <span className="absolute -bottom-2  md:-bottom-3 left-0 min-w-full">
+                        <span className="absolute -bottom-2 xs:-bottom-4  md:-bottom-8 left-0 min-w-full">
                             <Image src={powerline} alt={'Mission Line Image'} />
                         </span>
                     </span> in<br/>
