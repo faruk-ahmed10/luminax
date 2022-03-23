@@ -37,6 +37,9 @@ const Faq = () => {
 
     const titleRef = useRef();
     const itemsRef = useRef([]);
+    const [acd, setAcd] = useState(null);
+    
+
 
     useEffect(() => {
         gsap.from(titleRef.current, {
@@ -74,7 +77,7 @@ const Faq = () => {
                 </h1>
                 <div className="mt-10">
                     {
-                        faqData.map((v, idx) => <FaqItem key={idx} ref={el => itemsRef.current[idx] === el} {...v} />)
+                        faqData.map((v, idx) => <FaqItem key={idx} {...v} acd={acd === idx ? true : false} clicked={() => acd === idx ? setAcd(null) : setAcd(idx)} />)
                     }
                     <div className="">
                         <button className="text-dark-sec font-medium pl-5 my-5 text-xl">Load More</button>
