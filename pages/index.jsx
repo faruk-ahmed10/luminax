@@ -48,7 +48,7 @@ const Home = () => {
     };
 
     return (
-        <div className="bg-[#12141D] font-home overflow-hidden scroll-smooth">
+        <div className="bg-[#12141D] font-home scroll-smooth">
             <div onClick={handleSidebar} className={`fixed w-full bg-transparent top-0 z-50 min-h-screen lg:hidden transition-all duration-300 ease-in-out transform ${sidebar ? 'left-0' : '-left-full'}`}>
                 <div onClick={(e) => e.stopPropagation()} className={`w-[250px] h-full bg-dark-gray min-h-screen shadow-lg z-50`}>
                     <div className="relative w-full pl-4 h-20 flex items-center">

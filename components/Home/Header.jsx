@@ -32,7 +32,7 @@ const Header = () => {
     const { sidebar, setSidebar } = useContext(SidebarContext);
 
     return (
-        <header className="w-full shadow z-50 py-5 border-b-2 border-dark-pri/10 bg-[#12141D]">
+        <header className="sticky top-0 w-full shadow z-40 py-3 md:py-5 border-b-2 border-dark-pri/10 bg-[#12141D]">
             <div className="px-[5%] flex justify-between items-center">
 
                 <div className="relative md:hidden w-10 h-10">
