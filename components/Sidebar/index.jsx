@@ -19,7 +19,6 @@ const Sidebar = () => {
 
     const router = useRouter();
     const { sidebar, setSidebar } = useContext(SidebarContext);
-    
     const handleSidebar = () => setSidebar(!sidebar);
 
     return (

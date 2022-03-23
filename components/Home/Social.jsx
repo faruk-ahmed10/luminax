@@ -37,7 +37,7 @@ const SocialBanner = () => {
                 trigger: socialRef.current
             },
             opacity: 0,
-            x: '-100%',
+            y: '10%',
             duration: 2
         })
     }, []);

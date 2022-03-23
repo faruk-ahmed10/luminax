@@ -1,4 +1,5 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
+import 'react-toastify/dist/ReactToastify.css';
 import SidebarProvider from '../context/context'
 
 

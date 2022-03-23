@@ -5,56 +5,38 @@ import { useContext } from 'react';
 import { SidebarContext } from '../../context/context';
 import Web3 from 'web3';    
 import Web3Modal from 'web3modal';
+import { getProvider } from '../../web3client/web3modal';
+import { checkConnection, init } from '../../web3client';
 
 
-
+let web3;
 
 const Header = ({title}) => {
-    const [address, setAddress] = useState(null);
-    const { sidebar, setSidebar } = useContext(SidebarContext);
-    const web3ModalRef = useRef()
+
+
+    const { sidebar, setSidebar, walletAddrs, setWalletAddrs } = useContext(SidebarContext);
     
-    let provider;
+    
 
-
-    const walletConnector = async () => {
-        
-        try{
-            provider = await web3ModalRef.current.connect();
-            console.log("Provider inside: ", provider);
-        }catch(e){
-            console.log("Error: ", e);
-            return;
-        }
-
-        const web3 = new Web3(provider);
-        const chainId = await web3.eth.getChainId();
-        const adrs = await web3.eth.getAccounts();
-        if(adrs){
-            setAddress(adrs[0]);
+    const web3Connector = async () => {
+        init();
+        if(checkConnection()){
+            setWalletAddrs(checkConnection());
         }
     };
 
 
 
-
     useEffect(() => {
-        const providerOptions = {
-            binancechainwallet: {
-              package: true
+
+            if(localStorage.getItem('WEB3_CONNECT_CACHED_PROVIDER')){
+                init();
+                setWalletAddrs(checkConnection())
             }
-          };
+    
+    },[walletAddrs, setWalletAddrs]);
 
-            web3ModalRef.current = new Web3Modal({
-              network: 'mainnet', // optional
-              cacheProvider: true,
-              theme: 'dark',
-              providerOptions: {}, // required
-            })
 
-    },[]);
-
-    console.log(address);
     return (
         <div className="w-full">
             <div className="w-full py-5 flex justify-between items-center">
@@ -71,8 +53,8 @@ const Header = ({title}) => {
                         </select>
                     </div>
                     <div className="xs:px-5">
-                        <button onClick={!address ? walletConnector : null} className={`text-tiny xs:text-xs border-2 border-dark-pri text-white  px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold ${address ? '': 'hover:border-dark-sec hover:text-dark-sec'}`}>
-                            {address ? `${address.slice(0,7)}...` : 'Connect Wallet'}
+                        <button onClick={!walletAddrs ? web3Connector : null} className={`text-tiny xs:text-xs border-2 border-dark-pri text-white  px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold ${walletAddrs ? '': 'hover:border-dark-sec hover:text-dark-sec'}`}>
+                            {walletAddrs ? `${walletAddrs.slice(0,5)}...${walletAddrs.slice(-5)}` : 'Connect Wallet'}
                         </button>
                     </div>
                     <div className="pl-5 text-3xl">

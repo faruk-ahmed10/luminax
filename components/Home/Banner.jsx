@@ -15,15 +15,16 @@ const Banner = () => {
     useEffect(() => {
         gsap.from(bannerRef.current, {
             scrollTrigger: {
-                trigger: bannerRef.current
+                trigger: bannerRef.current,
+                start: 'center bottom'
             },
             opacity: 0,
-            x: '100%',
+            y: '10%',
             duration: 2
         })
     }, []);
     return (
-        <div ref={bannerRef} className="w-[80%] relative flex mx-auto mt-20 md:mt-32 py-5 md:py-10 px-5 md:px-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-500">
+        <div id="artists" ref={bannerRef} className="w-[80%] relative flex mx-auto mt-20 md:mt-32 py-5 md:py-10 px-5 md:px-12 rounded-lg bg-gradient-to-r from-blue-600 to-purple-500">
             <div className="md:w-1/2">
                 <h1 className="font-bold text-[40px] text-dark-white my-5">Upcoming Artist?</h1>
                 <p className="text-white/70 text-sm">
@@ -36,7 +37,7 @@ const Banner = () => {
                     Request Artist Sponsorship
                 </button>
                 <div className="md:w-80 lg:w-auto md:absolute right-5 bottom-0 -mb-5 md:-mb-2 flex justify-center md:block">
-                    <Image src={bannerbottom} alt={'People With Microphone'} />
+                    <Image src={bannerbottom} alt={'People With Microphone'} width={419} height={393} />
                 </div>  
             </div>
         </div>

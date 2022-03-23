@@ -1,41 +1,64 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import gsap from 'gsap';
+import { claimsAvailable, PayoutOf, userInfo, userInfoTotals } from "../../web3client";
+import { SidebarContext } from "../../context/context";
+import { toast } from "react-toastify";
 
-const spotItems = [
-    {
-        title: 'Available',
-        token_amount: 0.27894652,
-        balance: 10098.36
-    },
-    {
-        title: 'Deposit',
-        token_amount: 423.34,
-        balance: 10098.36
-    },
-    {
-        title: 'Drained',
-        token_amount: 0.13894652,
-        balance: 10098.36
-    },
-    {
-        title: 'Max Payout',
-        token_amount: 0.13894652,
-        balance: 10098.36
-    },
-    {
-        title: 'Rewarded',
-        token_amount: 45.13894652,
-        balance: 10098.36
-    },
-];
+
 
 
 
 const Spot = () => {
 
     const [autoRecharge, setAutoRecharge] = useState(true);
+    const [alToken, setAlToken] = useState(0);
+    const [mPayout, setMPayout] = useState(0);
+    const [usrInfo, setusrInfo] = useState(null);
+    const [usrTtlInfo, setUsrTtlInfo] = useState();
 
-   
+    const { walletAddrs } = useContext(SidebarContext);
+
+
+    const spotItems = [
+        {
+            title: 'Available',
+            token_amount: alToken,
+            balance: 10098.36
+        },
+        {
+            title: 'Deposit',
+            token_amount: usrTtlInfo ? usrTtlInfo.total_deposits : 0,
+            balance: 10098.36
+        },
+        {
+            title: 'Drained',
+            token_amount: usrTtlInfo ? usrTtlInfo.total_withdraw : 0,
+            balance: 10098.36
+        },
+        {
+            title: 'Max Payout',
+            token_amount: mPayout,
+            balance: 10098.36
+        },
+        {
+            title: 'Rewarded',
+            token_amount: usrInfo ? usrInfo.match_bonus : 0,
+            balance: 10098.36
+        },
+    ];
+
+
+    useEffect(() => {
+        claimsAvailable().then(av=> setAlToken(av)).catch(err => console.log("Calims Error",err));
+        PayoutOf().then(mp => setMPayout(mp.max_payout)).catch(err => console.log(err));
+        userInfo().then(ui => setusrInfo(ui)).catch(err => console.log("User info",err));
+    },[])
+    useEffect(() => {
+    
+        userInfoTotals(walletAddrs).then(ui => setUsrTtlInfo(ui)).catch(err => console.log("User info",err));
+
+    },[walletAddrs]);
+
     return (
         <div  className="w-full bg-dark-gray p-8 rounded-lg z-0">
             <div className="flex justify-between items-center">

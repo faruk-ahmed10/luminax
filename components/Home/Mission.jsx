@@ -4,10 +4,8 @@ import { BsFillPlayCircleFill } from 'react-icons/bs';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
-// Importing assets
-import mission from '../../assets/img/missionline.png';
-import missionmic from '../../assets/img/missionmic.png';
-import Ellipse from '../../assets/img/heroellipsetop.svg';
+
+
 
 const Mission = () => {
 
@@ -24,34 +22,34 @@ const Mission = () => {
             }
         });
         tl.from(titleRef.current, { opacity: 0, duration: 2  });
-        tl.from(boxRef.current, { opacity: 0, x: '-100%', duration: 2 });
-        tl.from(subRef.current, { opacity: 0, x: '100%', duration: 1 });
-        tl.from(descRef.current, { opacity: 0, x: '100%', duration: 1 });
-        tl.from(listRef.current, { opacity: 0, y: '150%' });
+        tl.from(boxRef.current, { opacity: 0, x: '-10%', duration: 1 });
+        tl.from(subRef.current, { opacity: 0, x: '10%', duration: 1 });
+        tl.from(descRef.current, { opacity: 0, x: '10%', duration: 1 });
+        tl.from(listRef.current, { opacity: 0, y: '15%' });
         
     },[]);
 
     return (
         <div id="mission" className="relative py-5 mt-10">
             <div className="absolute right-[15%] z-5 top-1/3">
-                    <Image src={Ellipse} alt="Hero Ellipse" width={400} height={300} />
+                    <Image src={'/assets/img/heroellipsetop.svg'} alt="Hero Ellipse" width={400} height={300} />
             </div>
             <div className="absolute left-20 z-5 top-2/3">
-                    <Image src={Ellipse} alt="Hero Ellipse" width={600} height={500} />
+                    <Image src={'/assets/img/heroellipsetop.svg'} alt="Hero Ellipse" width={600} height={500} />
             </div>
             <div className="px-[10%]">
                 <h1 ref={titleRef} className="font-bold text-center text-3xl text-dark-white sm:text-5xl lg:text-[80px] mb-10 lg:mb-20">
                     Our
                     <span className="relative"> Mission 
                         <span className="absolute -bottom-4 lg:-bottom-8 left-2 min-w-full">
-                            <Image src={mission} alt={'Mission Line Image'} />
+                            <Image src={'/assets/img/missionline.png'} width={266} height={10} alt={'Mission Line Image'} />
                         </span>
                     </span>
                 </h1>
                 <div className="md:flex items-center">
-                    <div ref={boxRef} className="sm:w-80 sm:h-80 relative lg:w-1/3 rounded-lg border-8 border-dark-white/10 flex flex-col justify-center items-center py-5 lg:py-10 bg-[#111121]">
-                        <div className="">
-                            <Image src={missionmic} alt={'Mission Microphone'} layout={'intrinsic'} />
+                    <div ref={boxRef} className="relative sm:w-80 sm:h-80 lg:w-1/3 rounded-lg border-8 border-dark-white/10 flex flex-col justify-center items-center py-5 lg:py-10 bg-[#111121]">
+                        <div className="relative w-48 h-72">
+                            <Image src={'/assets/img/missionmic.png'} alt={'Mission Microphone'} layout="fill" />
                         </div>
                         <h5 className="text-center font-semibold text-dark-white">
                             Watch to learn more

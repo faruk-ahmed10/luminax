@@ -7,9 +7,10 @@ export const SidebarContext = createContext();
 const SidebarProvider = ({ children }) => {
 
     const [sidebar, setSidebar] = useState(false);
-    console.log("Sidebar", sidebar);
+    const [walletAddrs, setWalletAddrs] = useState(null);
+    
     return (
-        <SidebarContext.Provider value={{sidebar, setSidebar}}>
+        <SidebarContext.Provider value={{sidebar, setSidebar, walletAddrs, setWalletAddrs}}>
             {children}
         </SidebarContext.Provider>
     )

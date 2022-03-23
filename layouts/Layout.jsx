@@ -14,7 +14,7 @@ const Layout = ({children}) => {
     };
 
     return (
-        <div className="w-full flex">
+        <div className="w-full flex scroll-smooth">
             <div className="hidden md:block">
                 <Sidebar />
             </div>
