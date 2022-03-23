@@ -1,48 +1,68 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import gsap from 'gsap';
+import { claimsAvailable, PayoutOf, userInfo, userInfoTotals } from "../../web3client";
+import { SidebarContext } from "../../context/context";
+import { toast } from "react-toastify";
 
-const spotItems = [
-    {
-        title: 'Available',
-        token_amount: 0.27894652,
-        balance: 10098.36
-    },
-    {
-        title: 'Deposit',
-        token_amount: 423.34,
-        balance: 10098.36
-    },
-    {
-        title: 'Drained',
-        token_amount: 0.13894652,
-        balance: 10098.36
-    },
-    {
-        title: 'Max Payout',
-        token_amount: 0.13894652,
-        balance: 10098.36
-    },
-    {
-        title: 'Rewarded',
-        token_amount: 45.13894652,
-        balance: 10098.36
-    },
-];
+
 
 
 
 const Spot = () => {
 
     const [autoRecharge, setAutoRecharge] = useState(true);
+    const [alToken, setAlToken] = useState(0);
+    const [mPayout, setMPayout] = useState(0);
+    const [usrInfo, setusrInfo] = useState(null);
+    const [usrTtlInfo, setUsrTtlInfo] = useState();
 
-    const spotRef = useRef();
+    const { walletAddrs } = useContext(SidebarContext);
 
-    useEffect(()=> {
-        gsap.from(spotRef.current, {y: 50, duration: 2, zIndex: 0});
-    },[]);
+
+    const spotItems = [
+        {
+            title: 'Available',
+            token_amount: alToken,
+            balance: 10098.36
+        },
+        {
+            title: 'Deposit',
+            token_amount: usrTtlInfo ? usrTtlInfo.total_deposits : 0,
+            balance: 10098.36
+        },
+        {
+            title: 'Drained',
+            token_amount: usrTtlInfo ? usrTtlInfo.total_withdraw : 0,
+            balance: 10098.36
+        },
+        {
+            title: 'Max Payout',
+            token_amount: mPayout,
+            balance: 10098.36
+        },
+        {
+            title: 'Rewarded',
+            token_amount: usrInfo ? usrInfo.match_bonus : 0,
+            balance: 10098.36
+        },
+    ];
+
+
+    useEffect(() => {
+        if(localStorage.getItem(!'WEB3_CONNECT_CACHED_PROVIDER')) return;
+        claimsAvailable().then(av=> setAlToken(av)).catch(err => console.log("Calims Error",err));
+        PayoutOf().then(mp => setMPayout(mp.max_payout)).catch(err => console.log(err));
+        userInfo().then(ui => setusrInfo(ui)).catch(err => console.log("User info",err));
+    },[walletAddrs])
+    useEffect(() => {
+
+        if(!walletAddrs) return;
+        userInfoTotals(walletAddrs).then(ui => setUsrTtlInfo(ui)).catch(err => console.log("User info",err));
+        console.log('Triggered!');
+    },[walletAddrs]);
 
     return (
-        <div ref={spotRef} className="w-full bg-dark-gray p-8 rounded-lg z-0">
+        <div  className="w-full bg-dark-gray p-8 rounded-lg z-0">
             <div className="flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-dark-white">Spot</h1>
                 <div className="flex items-center">
@@ -69,7 +89,7 @@ const Spot = () => {
                     spotItems.map((itm, idx) => (
                         <div className="" key={`spot_item${idx}`}>
                             <h3 className="text-xs font-semibold text-dark-white/90 pb-2">{itm.title}</h3>
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center">
                                 <span className="font-semibold text-dark-white">{itm.token_amount}</span>
                                 <span className="uppercase p-2 mx-2 bg-dark-pri/40 bg-opacity-50 text-white rounded-md font-bold text-xs">LUMIX</span>
                             </div>
