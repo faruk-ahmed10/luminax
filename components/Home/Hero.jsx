@@ -3,12 +3,11 @@ import { BsFillPlayCircleFill, BsArrowRight } from 'react-icons/bs';
 import { useRef, useEffect } from 'react';
 import gsap from "gsap";
 // Importing assets
-import musicdance from '../../assets/img/musicdance.png';
-import mic from '../../assets/img/microphone.png';
-import upline from '../../assets/img/upline.png';
-import TopEllipse from '../../assets/img/heroellipsetop.svg';
-import RightEllipse from '../../assets/img/heroellipseright.svg';
-import LeftEllipse from '../../assets/img/heroellipseleft.svg';
+const musicdance = '/assets/img/herobg.png';
+const upline = '/assets/img/upline.png';
+const TopEllipse = '/assets/img/heroellipsetop.svg';
+const RightEllipse = '/assets/img/heroellipseright.svg';
+const LeftEllipse = '/assets/img/heroellipseleft.svg';
 
 const Hero = () => {
 
@@ -18,20 +17,17 @@ const Hero = () => {
 
     useEffect(() => {
         const tl = gsap.timeline();
-        tl.from(titleRef.current, { opacity: 0, duration: 3  });
-        tl.from(descRef.current, { opacity: 0, x: '100%', duration: 1 });
-        tl.from(btnRef.current, { opacity: 0, y: '150%' });
+        tl.from(titleRef.current, { opacity: 0, duration: 1  });
+        tl.from(descRef.current, { opacity: 0, x: '10%', duration: 1 });
+        tl.from(btnRef.current, { opacity: 0, y: '10%' });
         
     },[]);
 
     return (
         <div className="min-h-screen relative overflow-hidden">
             <div className="">
-                <div className="absolute bottom-0 -mb-2">
-                    <Image src={musicdance} alt="Background Image" />
-                </div>
-                <div className="absolute bottom-0 left-0 -mb-2">
-                    <Image src={mic} alt="Microphone" />
+                <div className="absolute min-w-full bottom-0 -mb-2 text-center">
+                    <Image src={musicdance} alt="Background Image" width={1500} height={300} />
                 </div>
                 <div className="absolute top-5 left-1/4 -mb-2">
                     <Image src={TopEllipse} alt="Hero Ellipse" width={400} height={400} />
@@ -50,7 +46,7 @@ const Hero = () => {
                             Get paid 
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#C87716] to-dark-sec"> 1.1% ROI daily </span> 
                             backing your favorite <br/>
-                            <span className="relative"> upcoming artistes <span className="absolute -bottom-7 left-0 min-w-full"><Image src={upline} alt="Under Style" /></span> </span>
+                            <span className="relative"> upcoming artistes <span className="absolute -bottom-4 lg:-bottom-8 left-0 min-w-full"><Image src={upline} alt="Under Style" width={500} height={15} fill="responsive" /></span> </span>
                         </h1>
                     </div>
                     <div ref={descRef} className="text-center">
@@ -63,8 +59,8 @@ const Hero = () => {
                     </div>
                     <div ref={btnRef} className="text-center">
                         <div className="xs:my-5 xs:flex">
-                            <button className="w-56 flex items-center justify-center text-sm px-6 py-3 mb-2 xs:mb-0 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Buy Lumix<span className="px-2 text-2xl"><BsArrowRight /></span></button>
-                            <button className="w-56 flex items-center justify-center text-sm px-6 py-3 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Join Telegram<span className="px-2 text-2xl"><BsArrowRight /></span></button>
+                            <button className="w-56 xs:w-48 sm:w-56 flex items-center justify-center text-sm px-6 py-3 mb-2 xs:mb-0 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Buy Lumix<span className="px-2 text-2xl"><BsArrowRight /></span></button>
+                            <button className="w-56 xs:w-48 sm:w-56 flex items-center justify-center text-sm px-6 py-3 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Join Telegram<span className="px-2 text-2xl"><BsArrowRight /></span></button>
                         </div>
                         <div className="flex justify-center items-center text-dark-white mt-2 md:mt-0">
                             <div className="mr-3">

@@ -36,6 +36,7 @@ const faqData = [
 const Faq = () => {
 
     const titleRef = useRef();
+    const itemsRef = useRef([]);
 
     useEffect(() => {
         gsap.from(titleRef.current, {
@@ -47,6 +48,21 @@ const Faq = () => {
         })
     }, []);
     
+    useEffect(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: itemsRef.current,
+                start: 'center bottom'
+            }
+        });
+        tl.from(itemsRef.current, { opacity: 0, duration: 2 });
+        // tl.from(featuresRef.current, {  });
+        itemsRef.current.map((v, idx) => {
+            tl.from(itemsRef.current[idx], { opacity: 0, y: '3%', duration: 1 });
+        });
+        
+    },[]);
+
     return (
         <div id='faqs' className="relative mt-20">
             <div className="absolute left-1/2 -translate-x-1/2 z-5 -top-5 z-20 pt-10">
@@ -58,7 +74,7 @@ const Faq = () => {
                 </h1>
                 <div className="mt-10">
                     {
-                        faqData.map((v, idx) => <FaqItem key={idx} {...v} />)
+                        faqData.map((v, idx) => <FaqItem key={idx} ref={el => itemsRef.current[idx] === el} {...v} />)
                     }
                     <div className="">
                         <button className="text-dark-sec font-medium pl-5 my-5 text-xl">Load More</button>
