@@ -3,10 +3,10 @@ import Header from "../components/Header";
 import Stats from "../components/Reservoir/Stats";
 import Spot from "../components/Reservoir/Spot";
 import Sell from "../components/Reservoir/Sell";
+import Layout from "../layouts/Layout";
 
 
-
-const Reservoir = () => {
+export default function Reservoir(){
     return (
         <div className="w-full px-8">
             <Header title={'Reservoir'} />
@@ -20,4 +20,7 @@ const Reservoir = () => {
     )
 }
 
-export default Reservoir;
+Reservoir.getLayout = (page) => (
+    <Layout>
+        {page}
+    </Layout>);

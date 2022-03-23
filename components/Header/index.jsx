@@ -10,6 +10,8 @@ import { checkConnection, init } from '../../web3client';
 import { toast, ToastContainer } from 'react-toastify';
 
 
+let web3;
+
 const Header = ({title}) => {
 
 

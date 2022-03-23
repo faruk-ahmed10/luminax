@@ -67,7 +67,7 @@ const Spot = () => {
                     spotItems.map((itm, idx) => (
                         <div className="" key={`spot_item${idx}`}>
                             <h3 className="text-xs font-semibold text-dark-white/90 pb-2">{itm.title}</h3>
-                            <div className="flex items-center justify-between">
+                            <div className="flex items-center">
                                 <span className="font-semibold text-dark-white">{itm.token_amount}</span>
                                 <span className="uppercase p-2 mx-2 bg-dark-pri/40 bg-opacity-50 text-white rounded-md font-bold text-xs">LUMIX</span>
                             </div>

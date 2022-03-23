@@ -7,14 +7,29 @@ import Header from "../components/Header";
 import Head from 'next/head'
 import Image from 'next/image'
 import gsap from 'gsap';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+import Layout from '../layouts/Layout';
+import { getProvider } from '../web3client/web3modal';
+import { SidebarContext } from "../context/context";
+import { toast, ToastContainer } from "react-toastify";
+import { claimsAvailable } from "../web3client";
 
-export default function Home() {
-    
+
+export default function Faucet() {
+    const [userInfo, setUserInfo] = useState();
+    const { walletAddrs } = useContext(SidebarContext);
+    const [avail, setAvail] = useState();
+
+    useEffect(() => {
+
+        claimsAvailable().then(bl=> setAvail(bl)).catch((err) => console.log(err));
+
+    },[]);
 
     return (
         <div className="w-full px-8">
                 <Header title={'Faucet'} />
+                <ToastContainer theme="dark" />
                 <Spot />
                 <div className="my-8 xs:grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
                     <Deposit />
@@ -25,3 +40,8 @@ export default function Home() {
         </div>
     )
 }
+
+Faucet.getLayout = (page) => (
+    <Layout>
+        {page}
+    </Layout>);

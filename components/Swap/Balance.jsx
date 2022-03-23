@@ -32,7 +32,7 @@ const Balance = () => {
                     balData.map((itm, idx) => (
                         <li className="mt-5 first:mt-0 sm:mt-0" key={`balace_item${idx}`}>
                             <h3 className="text-xs font-semibold text-dark-white pb-2">{itm.title}</h3>
-                            <div className="w-full flex justify-between items-center">
+                            <div className="w-full flex items-center">
                                 <span className="font-semibold text-dark-white">{itm.token_amount}</span>
                                 <span className="uppercase p-2 mx-2 bg-dark-pri/20 text-white rounded-md font-bold text-xs">{itm.token}</span>
                             </div>

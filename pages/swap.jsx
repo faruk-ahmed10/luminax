@@ -4,7 +4,7 @@ import Balance from "../components/Swap/Balance";
 import Stats from '../components/Swap/Stats';
 import Sell from "../components/Swap/Sell";
 import { useState } from "react";
-
+import Layout from "../layouts/Layout";
 
 
 const Swap = () => {
@@ -24,4 +24,9 @@ const Swap = () => {
     )
 }
 
+Swap.getLayout = (page) => (
+    <Layout>
+        {page}
+    </Layout>);
+    
 export default Swap;

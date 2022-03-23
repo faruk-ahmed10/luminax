@@ -5,6 +5,7 @@ import banner2 from '../assets/img/banner2.png';
 import musictag from '../assets/img/musictag.png';
 import musictag2 from '../assets/img/musictag2.png';
 import Link from 'next/link';
+import Layout from '../layouts/Layout';
 
 import { BsShuffle, BsFillHeartFill, BsThreeDotsVertical } from 'react-icons/bs';
 import { ImLoop } from 'react-icons/im';
@@ -71,7 +72,7 @@ const artistsData = [
     },
 ];
 
-const Music = () => {
+export default function Music(){
 
     const [play, setPlay] = useState(false);
     const [volume, setVolume] = useState(50);
@@ -240,4 +241,7 @@ const Music = () => {
     )
 }
 
-export default Music;
+Music.getLayout = (page) => (
+    <Layout>
+        {page}
+    </Layout>);
