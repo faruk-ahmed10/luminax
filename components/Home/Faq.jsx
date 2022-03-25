@@ -67,7 +67,7 @@ const Faq = () => {
     },[]);
 
     return (
-        <div id='faqs' className="relative mt-20">
+        <div id='faqs' className="relative pt-20 md:pt-28">
             <div className="absolute left-1/2 -translate-x-1/2 z-5 -top-5 z-20 pt-10">
                     <Image src={Ellipse} alt="Hero Ellipse" width={600} height={500} />
             </div>

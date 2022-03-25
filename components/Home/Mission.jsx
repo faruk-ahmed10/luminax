@@ -30,7 +30,7 @@ const Mission = () => {
     },[]);
 
     return (
-        <div id="mission" className="relative py-5 mt-10">
+        <div id="mission" className="relative pt-20 md:pt-28">
             <div className="absolute right-[15%] z-5 top-1/3">
                     <Image src={'/assets/img/heroellipsetop.svg'} alt="Hero Ellipse" width={400} height={300} />
             </div>
@@ -59,10 +59,10 @@ const Mission = () => {
                         </div>
                     </div>
                     <div className="md:w-2/3 md:px-16 lg:px-28 mt-5 md:mt-0">
-                        <h2 ref={subRef} className="font-bold  text-2xl sm:text-4xl text-dark-white">
+                        <h2 ref={subRef} className="font-bold text-center md:text-left  text-2xl sm:text-4xl text-dark-white">
                             Our mission is to help build sustainable wealth out of the <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#C87716] to-dark-sec"> artist-fan economy</span> 
                         </h2>
-                        <p ref={descRef} className="mt-5 text-sm sm:text-base text-white/70">
+                        <p ref={descRef} className="mt-5 text-center md:text-left text-sm sm:text-base text-white/70">
                             Lumix makes your money work for you without thinking you about it. I will complete this part later but you get the general idea of what’s going on here.
                         </p>
                         <ul ref={listRef} className="mt-3">

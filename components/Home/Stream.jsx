@@ -49,13 +49,15 @@ const Stream = () => {
                 <div className="md:flex items-center md:pt-10 md:pb-20 ">
                     
                     <div className="md:w-1/2 lg:pr-20">
-                        <button ref={btnRef} className="border-2 border-dark-ter text-dark-ter uppercase rounded text-xs py-1 px-2 font-bold mb-5">
-                            PASSIVE INCOME FOR FANS
-                        </button>
-                        <h1 ref={subRef} className="text-white font-bold text-xl xs:text-2xl md:text-4xl">
+                        <div className="text-center md:text-left">
+                            <button ref={btnRef} className="border-2 border-dark-ter text-dark-ter uppercase rounded text-xs py-1 px-2 font-bold mb-5">
+                                PASSIVE INCOME FOR FANS
+                            </button>
+                        </div>
+                        <h1 ref={subRef} className="text-white text-center md:text-left font-bold text-xl xs:text-2xl md:text-4xl">
                             Lumix turns streaming into sustainable passive income for <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#C87716] to-dark-sec"> fans</span>. 
                         </h1>
-                        <p ref={descRef} className="mt-5 text-xs md:text-sm text-white/70">
+                        <p ref={descRef} className="mt-5 text-xs text-center md:text-left md:text-sm text-white/70">
                             Lumix makes your money work for you without thinking you about it. I will complete this part later but you get the general idea of what’s going on here.
                         </p>
                     </div>

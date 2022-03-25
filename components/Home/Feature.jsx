@@ -94,7 +94,7 @@ const Feature = () => {
     },[]);
 
     return (
-        <div className="relative py-5 md:mt-20" id='feature'>
+        <div className="relative py-5 pt-20 md:pt-28" id='feature'>
             <div className="absolute left-0 transform top-1/2 opacity-10">
                     <Image src={'/assets/img/dotwave.svg'} alt="Hero Ellipse" width={747} height={825} />
             </div>
@@ -129,22 +129,22 @@ const Feature = () => {
                         <div className="">
                             {
                             tab === 1?
-                            <h1 ref={subRef} className="font-bold text-xl md:text-4xl text-dark-white pt-6">
+                            <h1 ref={subRef} className="font-bold text-center md:text-center text-xl md:text-4xl text-dark-white pt-6">
                                 Auto Compounding. 
                                 Auto Withdrawal.
                                 Sustainable cash flow.
                             </h1>:
-                            <h1 ref={subRef} className="font-bold text-xl md:text-4xl text-dark-white pt-6">
+                            <h1 ref={subRef} className="font-bold text-center md:text-center text-xl md:text-4xl text-dark-white pt-6">
                                 Be the record label.
                                 Build momentum faster.
                                 Financial Freedom.
                             </h1>}
                             {
                             tab === 1 ?
-                            <p ref={descRef} className='mt-6 text-sm md:text-base'>
+                            <p ref={descRef} className='mt-6 text-sm text-center md:text-left md:text-base'>
                                 Lumix makes your money work for you without thinking you about it. I will complete this part later but you get the general idea of what’s going on here.
                             </p>:
-                            <p ref={descRef} className='mt-6 text-sm md:text-base'>
+                            <p ref={descRef} className='mt-6 text-sm text-center md:text-left md:text-base'>
                                 Are you an artist looking to excel in your career? Are you looking for real life changing support and partnerships? Lumix Network offers you unequalled opportunity. Click below and request for sponsorship and you are on your way to success!!
                             </p>
                             }

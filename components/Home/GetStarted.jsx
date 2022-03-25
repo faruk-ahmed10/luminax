@@ -69,7 +69,7 @@ const GetStarted = () => {
     },[]);
 
     return (
-        <div id='how' className="relative mt-20 md:pb-20 bg-gradient-to-b from-[#17192400] to-[#171924]">
+        <div id='how' className="relative pt-20 md:pt-28 md:pb-20 bg-gradient-to-b from-[#17192400] to-[#171924]">
             <div className="absolute left-0 z-0 -bottom-4 -mb-2">
                 <Image src={wave} alt="Hero Ellipse" width={1440} height={175} />
             </div>
@@ -86,7 +86,7 @@ const GetStarted = () => {
                     {
                         getData.map((v, idx) => (
                             <div ref={el => itemsRef.current[idx] = el} key={idx} className="bg-dark-white rounded-lg mb-5">
-                                <div className="px-5 py-10">
+                                <div className="px-5 py-10 text-center md:text-left">
                                     <h1 className="font-bold text-xl text-dark-black">
                                         <span className={`${v.color}`}>{idx + 1}.</span>
                                         {v.title}
