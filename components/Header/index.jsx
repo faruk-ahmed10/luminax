@@ -3,14 +3,9 @@ import { MdLightMode } from 'react-icons/md';
 import { IoMenu } from 'react-icons/io5';
 import { useContext } from 'react';
 import { SidebarContext } from '../../context/context';
-import Web3 from 'web3';    
-import Web3Modal from 'web3modal';
-import { getProvider } from '../../web3client/web3modal';
 import { checkConnection, init } from '../../web3client';
 import { toast, ToastContainer } from 'react-toastify';
 
-
-let web3;
 
 const Header = ({title}) => {
 

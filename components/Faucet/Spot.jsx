@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import gsap from 'gsap';
-import { claimsAvailable, PayoutOf, userInfo, userInfoTotals } from "../../web3client";
+import { claimsAvailable, PayoutOf, totalWithdraw, userInfo, userInfoTotals, web3 } from "../../web3client";
 import { SidebarContext } from "../../context/context";
 import { toast } from "react-toastify";
 
@@ -14,30 +14,32 @@ const Spot = () => {
     const [alToken, setAlToken] = useState(0);
     const [mPayout, setMPayout] = useState(0);
     const [usrInfo, setusrInfo] = useState(null);
-    const [usrTtlInfo, setUsrTtlInfo] = useState();
+    const [usrTtlInfo, setUsrTtlInfo] = useState(null);
+    const [ totWithdraw, setTotWithdraw ] = useState(0);
 
     const { walletAddrs } = useContext(SidebarContext);
 
+    
 
     const spotItems = [
         {
             title: 'Available',
-            token_amount: alToken,
+            token_amount: Number(alToken).toFixed(6),
             balance: 10098.36
         },
         {
             title: 'Deposit',
-            token_amount: usrTtlInfo ? usrTtlInfo.total_deposits : 0,
+            token_amount: usrTtlInfo ? Number(web3.utils.fromWei(usrTtlInfo.total_deposits)).toFixed(6) : 0,
             balance: 10098.36
         },
         {
             title: 'Drained',
-            token_amount: usrTtlInfo ? usrTtlInfo.total_withdraw : 0,
+            token_amount: usrTtlInfo ? Number(web3.utils.fromWei(totWithdraw)).toFixed(6) : 0,
             balance: 10098.36
         },
         {
             title: 'Max Payout',
-            token_amount: mPayout,
+            token_amount: mPayout ? Number(web3.utils.fromWei(mPayout)).toFixed(6) : 0,
             balance: 10098.36
         },
         {
@@ -53,6 +55,7 @@ const Spot = () => {
         claimsAvailable().then(av=> setAlToken(av)).catch(err => console.log("Calims Error",err));
         PayoutOf().then(mp => setMPayout(mp.max_payout)).catch(err => console.log(err));
         userInfo().then(ui => setusrInfo(ui)).catch(err => console.log("User info",err));
+        totalWithdraw().then(withdraw => setTotWithdraw(withdraw)).catch(err => console.log("Total Withdraw: ", err))
     },[walletAddrs])
     useEffect(() => {
 
@@ -60,6 +63,10 @@ const Spot = () => {
         userInfoTotals(walletAddrs).then(ui => setUsrTtlInfo(ui)).catch(err => console.log("User info",err));
         console.log('Triggered!');
     },[walletAddrs]);
+    console.log("From Spot Faucet");
+    console.log("User Info: ", usrInfo);
+    console.log("User TL Info: ", usrTtlInfo);
+    console.log("Max Payout: ", mPayout);
 
     return (
         <div  className="w-full bg-dark-gray p-8 rounded-lg z-0">

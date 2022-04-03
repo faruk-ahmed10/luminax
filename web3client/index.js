@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import Web3 from 'web3';
 import Web3Modal from 'web3modal';
 import { FaucetABI } from '../_shared/abi/faucetABI.ts';
@@ -77,16 +78,16 @@ const tokenContract = async () => {
 export const claimsAvailable = async () => {
 
     const fc = await faucetContract();
-    return await fc.claimsAvailable(selectedAddress).call();
+    const amt = await fc.claimsAvailable(selectedAddress).call();
+    return web3.utils.fromWei(amt);
 
 };
 
 export const PayoutOf = async () => {
 
     const fc = await faucetContract();
-    console.log("Contract: ", fc);
     return await fc.payoutOf(selectedAddress).call();
-
+    
 };
 
 export const userInfo = async () => {
@@ -110,11 +111,26 @@ export const Custody = async (address) => {
 
 };
 
-export const deposit = async (buddyAddress, amount) => {
+export const deposit = async (amount) => {
 
     const fc = await faucetContract();
-    return await fc.deposit(buddyAddress, amount).call();
+    const buddyAddrs = await userInfo(selectedAddress);
+    console.log("buddy addrs",buddyAddrs.upline);
+    const amt = web3.utils.toWei(amount);
+    console.log(amt);
+    toast.info('Deposit on the process');
+    return await fc.deposit(buddyAddrs.upline, amt)
+    .send({
+        from: selectedAddress
+    });
+    
 };
+
+export const totalWithdraw = async () => {
+    const fc = await faucetContract();
+    return await fc.total_withdraw().call();
+};
+
 
 //  Methods of token contracts for faucet page
 
@@ -122,13 +138,25 @@ export const balanceOf = async () => {
 
     const tc = await tokenContract();
     console.log("Token Contract: ", tc);
-    return await tc.balanceOf(selectedAddress).call();
+    const bal = await tc.balanceOf(selectedAddress).call();
+    return web3.utils.fromWei(bal);
     
 };
 
 export const approve = async (amount) => {
 
     const tc = await tokenContract();
-    return await tc.approve(process.env.NEXT_PUBLIC_FAUCET_ADDRESS, amount).call();
+    const amt = web3.utils.toWei(amount);
+    toast.info('Approval on the process');
+    return await tc.approve(process.env.NEXT_PUBLIC_FAUCET_ADDRESS, amt).send({from: selectedAddress});
 
 };
+
+export const getAllownce = async () => {
+    const tc = await tokenContract();
+    const amount = await tc.allowance(selectedAddress, process.env.NEXT_PUBLIC_FAUCET_ADDRESS).call();
+    return web3.utils.fromWei(amount);
+};
+
+// Exported Web3 to use on others components
+export {web3};

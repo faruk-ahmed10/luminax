@@ -12,8 +12,10 @@ const PlayerLookup = () => {
 
     const { walletAddrs } = useContext(SidebarContext);
     const handlePlayerLookup = async () => {
+        if(localStorage.getItem(!'WEB3_CONNECT_CACHED_PROVIDER')) return;
         if(!address){
             toast.error('Address Required!');
+            return;
         }
         userInfoTotals(address).then(info => setUsrInfoTotals(info)).catch(err => console.log(err));
     };
