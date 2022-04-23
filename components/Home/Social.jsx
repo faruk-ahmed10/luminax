@@ -10,15 +10,18 @@ gsap.registerPlugin(ScrollTrigger);
 const socialLinks = [
     {
         name: 'Telegram',
-        icon: <FaTelegramPlane />
+        icon: <FaTelegramPlane />,
+        link: 'https://t.me/Lumix_Network',
     },
     {
         name: 'Twitter',
-        icon: <FiTwitter />
+        icon: <FiTwitter />,
+        link: 'https://twitter.com/lumixnetwork'
     },
     {
         name: 'Instagram',
-        icon: <FiInstagram />
+        icon: <FiInstagram />,
+        link: 'https://instagram.com/lumixnetwork'
     },
     {
         name: 'Facebook',
@@ -53,9 +56,11 @@ const SocialBanner = () => {
                     {
                         socialLinks.map((v, idx) => (
                             <div key={`social_${idx}`} className="w-10 sm:w-20 h-10 sm:h-20 flex justify-center items-center p-2 rounded-lg text-4xl text-white hover:bg-dark/30 cursor-pointer hover:text-dark-sec ">
+                                <a href={v.link}>
                                 {
                                     v.icon
                                 }
+                                </a>
                             </div>
                         ))
                     }

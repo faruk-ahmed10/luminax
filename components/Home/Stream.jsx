@@ -58,7 +58,7 @@ const Stream = () => {
                             Lumix turns streaming into sustainable passive income for <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#C87716] to-dark-sec"> fans</span>. 
                         </h1>
                         <p ref={descRef} className="mt-5 text-xs text-center md:text-left md:text-sm text-white/70">
-                            Lumix makes your money work for you without thinking you about it. I will complete this part later but you get the general idea of what’s going on here.
+                            Streaming takes place across uncountable number of platforms today and are a major source of rewards for artists. The Lumix Community provides a ready source of streaming for our artists and are thereby rewarded for this support. 
                         </p>
                     </div>
                     <div className="md:w-1/2">

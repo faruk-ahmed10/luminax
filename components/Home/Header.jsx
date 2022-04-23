@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useContext } from 'react';
-import {SidebarContext } from '../../context/context';
+import { useSidebarContext } from '../../context/sidebarProvider';
 import logo from '../../assets/img/lumixnet.svg';
 import { IoMenu } from "react-icons/io5";
 
@@ -29,7 +28,7 @@ const navData = [
 
 const Header = () => {
 
-    const { sidebar, setSidebar } = useContext(SidebarContext);
+    const { sidebar, setSidebar } = useSidebarContext();
 
     return (
         <header className="sticky top-0 w-full shadow z-40 py-3 md:py-5 border-b-2 border-dark-pri/10 bg-[#12141D]">
@@ -61,8 +60,8 @@ const Header = () => {
                     {/*<button onClick={''} className="text-tiny xs:text-xs border-2 border-dark-pri hover:border-dark-sec text-white hover:text-dark-black hover:bg-dark-sec px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold transition-all duration-200 ease-out">*/}
                     {/*    Connect Wallet*/}
                     {/*</button>*/}
-                    <button onClick={''} className="text-tiny xs:text-xs border-2 border-dark-pri hover:border-dark-sec text-white hover:text-dark-black hover:bg-dark-sec px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold transition-all duration-200 ease-out">
-                        Join the Telegram
+                    <button className="text-tiny xs:text-xs border-2 border-dark-pri hover:border-dark-sec text-white hover:text-dark-black hover:bg-dark-sec px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold transition-all duration-200 ease-out">
+                        <a href="https://t.me/Lumix_Network" className="">Join the Telegram</a>
                     </button>
 
                 </div>

@@ -1,8 +1,6 @@
 
 
 const Stats = () => {
-
-
     return (
         <div className="w-full my-8 bg-dark-gray p-8 rounded-lg">
             <h1 className="font-medium text-3xl text-dark-white">Stats</h1>

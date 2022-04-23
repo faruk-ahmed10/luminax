@@ -17,31 +17,31 @@ const specialData = [
     },
     {
         title: 'NFTs',
-        subtitle: 'Buy and sell popular digital currencies, keep track of them in the one place.',
+        subtitle: 'Mint your NFTs here and sell to your loyal fans globally.',
         icon: <AiOutlineLock/>,
         color: 'text-[#F178B6]'
     },
     {
         title: 'Launchpad',
-        subtitle: '',
+        subtitle: 'Create and trade your Icon Fan Tokens  and provide unparalleled experience to your fans around the world.',
         icon: <AiOutlineLock />,
         color: 'text-[#FFDAAE]'
     },
     {
         title: 'Metaverse',
-        subtitle: '',
+        subtitle: 'Enter into our metaverse and become your dream. All within the click of a button',
         icon: <AiOutlineLock />,
         color: 'text-[#52BDFF]'
     },
     {
         title: 'Liquidity Pool',
-        subtitle: '',
+        subtitle: 'Buy and sell popular digital currencies, keep track of them in the one place.',
         icon: <AiOutlinePieChart />,
         color: 'text-[#F27F16]'
     },
     {
         title: 'Rewards',
-        subtitle: '',
+        subtitle: 'Stake your Lumix within our artist farms and earn daily. The longer your stake, the higher your rewards!',
         icon: <AiOutlineLock />,
         color: 'text-[#FF6600]'
     },
@@ -201,7 +201,7 @@ const Feature = () => {
                                         </div>
                                         <h1 className="font-bold text-2xl text-dark-white mt-10">{v.title}</h1>
                                         <p className="mt-5 text-white/70">
-                                            Buy and sell popular digital currencies, keep track of them in the one place.
+                                            {v.subtitle}
                                         </p>
                                     </div>
                                 )

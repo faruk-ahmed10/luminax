@@ -1,12 +1,9 @@
-import { useContext, useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { SidebarContext } from "../context/context";
+import { useSidebarContext } from "../context/sidebarProvider";
 
+const Layout = ({ children }) => {
 
-
-const Layout = ({children}) => {
-
-    const { sidebar, setSidebar } = useContext(SidebarContext);
+    const { sidebar, setSidebar } = useSidebarContext();
 
     const handleOnBlur = () => {
         console.log("Onblur happended");

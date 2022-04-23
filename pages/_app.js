@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import 'react-toastify/dist/ReactToastify.css';
-import SidebarProvider from '../context/context'
+import GlobalProvider from '../context/globalProvider';
+import SidebarProvider from '../context/sidebarProvider';
 
 
 function MyApp({ Component, pageProps }) {
@@ -8,11 +9,13 @@ function MyApp({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
 
   return (
-    <SidebarProvider>
-        {
-          getLayout(<Component {...pageProps} />)
-        }
-    </SidebarProvider>
+      <SidebarProvider>
+        <GlobalProvider>
+            {
+              getLayout(<Component {...pageProps} />)
+            }
+        </GlobalProvider>
+      </SidebarProvider>
   )
 }
 

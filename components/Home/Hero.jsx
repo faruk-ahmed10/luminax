@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link';
 import { BsFillPlayCircleFill, BsArrowRight } from 'react-icons/bs';
 import { useRef, useEffect } from 'react';
 import gsap from "gsap";
@@ -8,6 +9,7 @@ const upline = '/assets/img/upline.png';
 const TopEllipse = '/assets/img/heroellipsetop.svg';
 const RightEllipse = '/assets/img/heroellipseright.svg';
 const LeftEllipse = '/assets/img/heroellipseleft.svg';
+
 
 const Hero = () => {
 
@@ -59,7 +61,11 @@ const Hero = () => {
                     </div>
                     <div ref={btnRef} className="text-center">
                         <div className="xs:my-5 xs:flex">
-                            <button className="w-56 xs:w-48 sm:w-56 flex items-center justify-center text-sm px-6 py-3 mb-2 xs:mb-0 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Buy Lumix<span className="px-2 text-2xl"><BsArrowRight /></span></button>
+                            <Link href="/swap">
+                                <a className="w-56 xs:w-48 sm:w-56 flex items-center justify-center text-sm px-6 py-3 mb-2 xs:mb-0 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">
+                                    Buy Lumix<span className="px-2 text-2xl"><BsArrowRight /></span>
+                                </a>
+                            </Link>
                             <button className="w-56 xs:w-48 sm:w-56 flex items-center justify-center text-sm px-6 py-3 rounded-full bg-dark-white hover:bg-dark-sec mx-3 font-bold text-dark-black transition-colors duration-300 ease-out">Join Telegram<span className="px-2 text-2xl"><BsArrowRight /></span></button>
                         </div>
                         <div className="flex justify-center items-center text-dark-white mt-2 md:mt-0">

@@ -1,37 +1,24 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect  } from 'react';
 import { MdLightMode } from 'react-icons/md';
 import { IoMenu } from 'react-icons/io5';
-import { useContext } from 'react';
-import { SidebarContext } from '../../context/context';
-import { checkConnection, init } from '../../web3client';
+import { useSidebarContext } from '../../context/sidebarProvider';
 import { toast, ToastContainer } from 'react-toastify';
+import {  useGlobalContext } from '../../context/globalProvider';
 
 
 const Header = ({title}) => {
-
-
-    const { sidebar, setSidebar, walletAddrs, setWalletAddrs } = useContext(SidebarContext);
+    const { sidebar, setSidebar} = useSidebarContext();
+    const { connectWallet, selectedAccount, wrongNetwork, handleSwitchNetwork, supportedChainID } = useGlobalContext();
     
-    
-
-    const web3Connector = async () => {
-        await init();
-        if(checkConnection()){
-            setWalletAddrs(checkConnection());
-        }
-    };
-
-
-
     useEffect(() => {
+        if(!selectedAccount) {
             if(localStorage.getItem('WEB3_CONNECT_CACHED_PROVIDER')){
-                web3Connector();
+                connectWallet();
             }else{
                 toast.info('Your wallet is not connected');
             }
-    
-    },[]);
-
+        }
+    }, [connectWallet, selectedAccount]);
 
     return (
         <div className="w-full">
@@ -50,9 +37,15 @@ const Header = ({title}) => {
                         </select>
                     </div>
                     <div className="xs:px-5">
-                        <button onClick={!walletAddrs ? web3Connector : null} className={`text-tiny xs:text-xs border-2 border-dark-pri text-white  px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold ${walletAddrs ? '': 'hover:border-dark-sec hover:text-dark-sec'}`}>
-                            {walletAddrs ? `${walletAddrs.slice(0,5)}...${walletAddrs.slice(-5)}` : 'Connect Wallet'}
-                        </button>
+                        {wrongNetwork ? 
+                            (
+                                <button className='text-red-600 border-2 border-dark-pri capitalize cursor-pointer px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold' onClick={() => handleSwitchNetwork(supportedChainID)}>Wrong Network</button>
+                            )
+                        : (
+                            <button onClick={!selectedAccount ? connectWallet : null} className={`text-tiny xs:text-xs border-2 border-dark-pri text-white  px-3 py-1 xs:px-6 xs:py-3 rounded-full font-bold ${selectedAccount ? '': 'hover:border-dark-sec hover:text-dark-sec'}`}>
+                                {selectedAccount ? `${selectedAccount.slice(0,5)}...${selectedAccount.slice(-5)}` : 'Connect Wallet'}
+                            </button>
+                        )}
                     </div>
                     <div className="pl-5 text-3xl">
                         <MdLightMode className='cursor-pointer hover:text-dark-sec' />

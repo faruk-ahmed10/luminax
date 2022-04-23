@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { IoCloseSharp } from 'react-icons/io5';
 import Link from 'next/link';
-import { useContext } from "react";
 import Banner from "../components/Home/Banner";
 import Faq from "../components/Home/Faq";
 import Feature from "../components/Home/Feature";
@@ -12,7 +11,7 @@ import Hero from "../components/Home/Hero";
 import Mission from "../components/Home/Mission";
 import SocialBanner from "../components/Home/Social";
 import Stream from "../components/Home/Stream";
-import { SidebarContext } from "../context/context";
+import { useSidebarContext } from "../context/sidebarProvider";
 import logo from '../assets/img/lumixnet.svg';
 import { useRouter } from 'next/router';
 
@@ -39,8 +38,7 @@ const navData = [
 
 
 const Home = () => {
-
-    const { sidebar, setSidebar } = useContext(SidebarContext);
+    const { sidebar, setSidebar } = useSidebarContext();
     const router = useRouter();
     const handleSidebar = () => {
         console.log("Onblur happended");

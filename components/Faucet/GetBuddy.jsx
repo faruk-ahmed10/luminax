@@ -1,15 +1,14 @@
 import gsap from 'gsap';
-import { useRef, useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-import { SidebarContext } from '../../context/context';
-import { Custody, userInfo } from '../../web3client';
+import { useGlobalContext } from '../../context/globalProvider';
 
 const GetBuddy = () => {
 
     const [custody, setCustody] = useState(null);
     const [usrInfo, setUsrInfo] = useState(null);
     const [buddyAddress, setBuddyAddress] = useState(null);
-    const { walletAddrs } = useContext(SidebarContext);
+    const { selectedAccount, custody: Custody, userInfo, } = useGlobalContext();
 
     const buddyAddressHandler = () => {
         if(!buddyAddress){
@@ -19,11 +18,10 @@ const GetBuddy = () => {
         Custody(buddyAddress).then(ct => setCustody(ct)).catch(err => toast.error(err));
         toast.success('Sucess');
     };
+
     useEffect(() => {
-
-        if(localStorage.getItem(!'WEB3_CONNECT_CACHED_PROVIDER')) return;
+        if(!selectedAccount) return;
         userInfo().then(ui => setUsrInfo(ui)).catch(err => toast.error(err));
-
     },[]);
 
     console.log("Custody: ", custody);

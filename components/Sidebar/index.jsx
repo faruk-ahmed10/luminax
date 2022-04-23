@@ -4,21 +4,19 @@ import { IoDocumentTextOutline, IoCloseSharp } from 'react-icons/io5'
 import { BiShoppingBag } from 'react-icons/bi'
 import { RiFacebookCircleLine, RiTwitterLine } from 'react-icons/ri';
 import { BsInstagram, BsExclamationCircle } from 'react-icons/bs';
-import { FaChalkboardTeacher, FaCross } from 'react-icons/fa';
+import { FaChalkboardTeacher } from 'react-icons/fa';
 import Link from 'next/link';
 
 import binance from '../../assets/img/binance.svg';
 import digibyte from '../../assets/img/digibyte.svg';
-import { useContext, useRef, useEffect   } from "react";
-import { SidebarContext } from "../../context/context";
+import {  useSidebarContext } from "../../context/sidebarProvider";
 import { useRouter } from "next/router";
-import gsap from 'gsap';
 
 
 const Sidebar = () => {
 
     const router = useRouter();
-    const { sidebar, setSidebar } = useContext(SidebarContext);
+    const { sidebar, setSidebar } = useSidebarContext();
     const handleSidebar = () => setSidebar(!sidebar);
 
     return (

@@ -29,9 +29,7 @@ const Banner = () => {
                 <div className="md:w-1/2 text-center md:text-left">
                     <h1 className="font-bold text-[40px] text-dark-white my-5">Upcoming Artist?</h1>
                     <p className="text-white/70 text-sm">
-                        Lumix makes your money work for you without 
-                        thinking you about it. I will complete this part 
-                        later but you get the general idea of what’s
+                        Are you an artiste looking to excel in your career? Are you looking for real life changing support and partnerships? Lumix Network offers you an unequalled opportunity. Click below and request for sponsorship and you are on your way to success!!
                     </p>
 
                     <button className="text-xs md:text-base px-6 py-4 rounded-full bg-dark-white hover:bg-dark-sec my-5 font-bold text-dark-black transition-colors duration-300 ease-out">

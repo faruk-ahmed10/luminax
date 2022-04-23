@@ -1,18 +1,16 @@
-import gsap from 'gsap';
-import { useEffect, useRef, useState, useContext } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { SidebarContext } from '../../context/context';
-import { userInfoTotals } from '../../web3client';
+import { useGlobalContext } from '../../context/globalProvider';
 
 
 const PlayerLookup = () => {
     
     const [usrInfoTotals, setUsrInfoTotals] = useState();
     const [address, setAddress] = useState();
+    const { selectedAccount, userInfoTotals, bnbLumixPrice } = useGlobalContext();
 
-    const { walletAddrs } = useContext(SidebarContext);
     const handlePlayerLookup = async () => {
-        if(localStorage.getItem(!'WEB3_CONNECT_CACHED_PROVIDER')) return;
+        if(!selectedAccount) return;
         if(!address){
             toast.error('Address Required!');
             return;
@@ -21,6 +19,7 @@ const PlayerLookup = () => {
     };
 
     console.log("UsrInfo: ",usrInfoTotals);
+
     return (
         <div  className="w-full  rounded-lg bg-dark-gray p-8 mt-5 xs:mt-0">
             <div className="">
@@ -51,7 +50,7 @@ const PlayerLookup = () => {
                         </li>
                         <li className="border-t border-dark-pri/40 py-5">
                             <h3 className="">Net Deposits</h3>
-                            <p className="text-sm font-medium text-dark-white">0.3039393939 BNB/LUMIX</p>
+                            <p className="text-sm font-medium text-dark-white">{bnbLumixPrice} BNB/LUMIX</p>
                         </li>
                     </ul>
                 </div>
